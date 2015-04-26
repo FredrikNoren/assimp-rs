@@ -6,7 +6,7 @@ rust:
 
 install:
   - sudo apt-get update -qq
-  - sudo apt-get install libassimp-dev
+  - sudo apt-get install libxxf86vm-dev libosmesa6-dev libassimp-dev
 
 before_script:
   - rustc -V
