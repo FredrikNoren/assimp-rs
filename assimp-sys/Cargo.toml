@@ -1,0 +1,15 @@
+[package]
+name = "assimp-sys"
+version = "0.0.1"
+authors = ["Lee Jeffery <eljay@users.noreply.github.com>"]
+
+description = "Rust bindings for the Assimp library"
+repository = "https://github.com/Eljay/assimp-rs"
+
+license = "MIT"
+readme = "README.md"
+
+[dependencies]
+libc = "*"
+bitflags = "*"
+cgmath = "*"

@@ -1,0 +1,18 @@
+language: rust
+
+rust:
+  - 1.0.0-beta.2
+  - nightly
+
+addons:
+  apt:
+    packages:
+      - libassimp-dev
+
+before_script:
+  - rustc -V
+  - cargo -V
+
+script:
+  - cargo build -v
+  - cargo test -v
