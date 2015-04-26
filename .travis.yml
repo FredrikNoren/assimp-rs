@@ -6,7 +6,8 @@ rust:
 
 install:
   - sudo apt-get update -qq
-  - sudo apt-get install libxxf86vm-dev libosmesa6-dev libassimp-dev
+  - sudo apt-get install libxxf86vm-dev libosmesa6-dev
+  - ./travis-install-assimp.sh
 
 before_script:
   - rustc -V
