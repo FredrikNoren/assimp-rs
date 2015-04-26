@@ -15,3 +15,4 @@ before_script:
 script:
   - cargo build -v
   - cargo test -v
+  - cargo test -v -p assimp-sys
