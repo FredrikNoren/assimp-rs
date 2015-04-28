@@ -11,9 +11,9 @@ readme = "README.md"
 
 [dependencies]
 assimp-sys = "*"
+cgmath = "*"
+libc = "*"
 
 [dev-dependencies]
 glium = "*"
 glutin = "*"
-cgmath = "*"
-libc = "*"

@@ -1,8 +1,11 @@
 language: rust
 
 rust:
-  - 1.0.0-beta.2
+  - beta
   - nightly
+
+env:
+  - LD_LIBRARY_PATH=/usr/local/lib
 
 install:
   - sudo apt-get update -qq
