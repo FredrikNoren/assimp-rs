@@ -1,8 +1,8 @@
-use libc::{c_uchar, size_t};
 use std::ffi::CString;
 use std::fmt::{Debug, Formatter, Result};
 use std::str;
 
+use libc::{c_uchar, size_t};
 pub const MAXLEN : usize = 1024;
 
 #[repr(C)]
@@ -12,12 +12,23 @@ pub struct AiString {
     pub data: [c_uchar; MAXLEN]
 }
 
-impl AiString {
-    pub fn as_str(&self) -> &str {
+impl Default for AiString {
+    fn default() -> AiString {
+        AiString {
+            length: 0,
+            data: [0; MAXLEN]
+        }
+    }
+}
+
+impl AsRef<str> for AiString {
+    fn as_ref(&self) -> &str {
         str::from_utf8(&self.data[0..self.length as usize]).unwrap()
     }
+}
 
-    pub fn from_str(s: &str) -> AiString {
+impl<'a> From<&'a str> for AiString {
+    fn from(s: &str) -> AiString {
         assert!(s.len() < MAXLEN);
 
         let cstr = CString::new(s).unwrap();
@@ -40,13 +51,16 @@ impl Clone for AiString {
 
 impl Debug for AiString {
     fn fmt(&self, f: &mut Formatter) -> Result {
-        write!(f, "{:?}", self.as_str())
+        let s: &str = self.as_ref();
+        write!(f, "{:?}", s)
     }
 }
 
 impl PartialEq for AiString {
     fn eq(&self, other: &AiString) -> bool {
-        self.as_str() == other.as_str()
+        let s1: &str = self.as_ref();
+        let s2: &str = other.as_ref();
+        s1 == s2
     }
 }
 
