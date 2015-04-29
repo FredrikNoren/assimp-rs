@@ -1,4 +1,4 @@
-extern crate assimp_sys as sys;
+extern crate assimp_sys as ffi;
 extern crate cgmath;
 extern crate libc;
 
@@ -12,12 +12,9 @@ pub use vector3::*;
 
 mod color3;
 mod color4;
+pub mod config;
 mod matrix3;
 mod matrix4;
 mod quaternion;
 mod vector2;
 mod vector3;
-
-pub mod ffi {
-    pub use sys::*;
-}
