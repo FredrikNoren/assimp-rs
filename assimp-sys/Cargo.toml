@@ -1,6 +1,6 @@
 [package]
 name = "assimp-sys"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["Lee Jeffery <lee@leejeffery.co.uk>"]
 
 description = "Rust FFI bindings for the Assimp library"
