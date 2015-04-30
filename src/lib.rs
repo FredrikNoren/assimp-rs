@@ -4,6 +4,7 @@ extern crate libc;
 
 pub use color3::*;
 pub use color4::*;
+pub use import::*;
 pub use matrix3::*;
 pub use matrix4::*;
 pub use quaternion::*;
@@ -13,6 +14,7 @@ pub use vector3::*;
 mod color3;
 mod color4;
 pub mod config;
+mod import;
 mod matrix3;
 mod matrix4;
 mod quaternion;
