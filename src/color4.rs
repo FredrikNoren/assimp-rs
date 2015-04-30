@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 use cgmath::Vector4;
 use ffi::AiColor4D;
 use libc::c_float;
@@ -25,5 +27,13 @@ impl From<Vector4<c_float>> for Color4D {
 impl Into<Vector4<c_float>> for Color4D {
     fn into(self) -> Vector4<c_float> {
         Vector4::new(self.0.r, self.0.g, self.0.b, self.0.a)
+    }
+}
+
+impl Deref for Color4D {
+    type Target = AiColor4D;
+
+    fn deref<'a>(&'a self) -> &'a AiColor4D {
+        &self.0
     }
 }

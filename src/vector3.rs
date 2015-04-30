@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 use cgmath::{Point3, Vector3};
 use ffi::AiVector3D;
 use libc::c_float;
@@ -36,5 +38,13 @@ impl From<Vector3<c_float>> for Vector3D {
 impl Into<Vector3<c_float>> for Vector3D {
     fn into(self) -> Vector3<c_float> {
         Vector3::new(self.0.x, self.0.y, self.0.z)
+    }
+}
+
+impl Deref for Vector3D {
+    type Target = AiVector3D;
+
+    fn deref<'a>(&'a self) -> &'a AiVector3D {
+        &self.0
     }
 }

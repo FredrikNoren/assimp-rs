@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 use cgmath::Quaternion as CgQuaternion;
 use ffi::AiQuaternion;
 use libc::c_float;
@@ -25,5 +27,13 @@ impl From<CgQuaternion<c_float>> for Quaternion {
 impl Into<CgQuaternion<c_float>> for Quaternion {
     fn into(self) -> CgQuaternion<c_float> {
         CgQuaternion::new(self.0.w, self.0.x, self.0.y, self.0.z)
+    }
+}
+
+impl Deref for Quaternion {
+    type Target = AiQuaternion;
+
+    fn deref<'a>(&'a self) -> &'a AiQuaternion {
+        &self.0
     }
 }

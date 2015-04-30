@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 use cgmath::Vector3;
 use ffi::AiColor3D;
 use libc::c_float;
@@ -24,5 +26,13 @@ impl From<Vector3<c_float>> for Color3D {
 impl Into<Vector3<c_float>> for Color3D {
     fn into(self) -> Vector3<c_float> {
         Vector3::new(self.0.r, self.0.g, self.0.b)
+    }
+}
+
+impl Deref for Color3D {
+    type Target = AiColor3D;
+
+    fn deref<'a>(&'a self) -> &'a AiColor3D {
+        &self.0
     }
 }

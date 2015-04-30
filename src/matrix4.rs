@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 use cgmath::Matrix4;
 use ffi::AiMatrix4x4;
 use libc::c_float;
@@ -34,5 +36,13 @@ impl Into<Matrix4<c_float>> for Matrix4x4 {
                      self.0.a2, self.0.b2, self.0.c2, self.0.d2,
                      self.0.a3, self.0.b3, self.0.c3, self.0.d3,
                      self.0.a4, self.0.b4, self.0.c4, self.0.d4)
+    }
+}
+
+impl Deref for Matrix4x4 {
+    type Target = AiMatrix4x4;
+
+    fn deref<'a>(&'a self) -> &'a AiMatrix4x4 {
+        &self.0
     }
 }

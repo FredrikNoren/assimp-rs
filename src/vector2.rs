@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 use cgmath::{Point2, Vector2};
 use ffi::AiVector2D;
 use libc::c_float;
@@ -35,5 +37,13 @@ impl From<Vector2<c_float>> for Vector2D {
 impl Into<Vector2<c_float>> for Vector2D {
     fn into(self) -> Vector2<c_float> {
         Vector2::new(self.0.x, self.0.y)
+    }
+}
+
+impl Deref for Vector2D {
+    type Target = AiVector2D;
+
+    fn deref<'a>(&'a self) -> &'a AiVector2D {
+        &self.0
     }
 }
