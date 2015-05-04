@@ -1,6 +1,6 @@
 [package]
 name = "assimp"
-version = "0.0.2"
+version = "0.0.3"
 authors = ["Lee Jeffery <lee@leejeffery.co.uk>"]
 
 description = "Rust bindings for the Assimp library"
