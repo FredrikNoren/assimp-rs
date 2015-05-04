@@ -1,22 +1,17 @@
+//! # assimp - Open Asset Import Library
+//!
+//! Bindings for the [Assimp](http://assimp.sourceforge.net) library.
+
 extern crate assimp_sys as ffi;
 extern crate cgmath;
 extern crate libc;
 
-pub use color3::*;
-pub use color4::*;
-pub use import::*;
-pub use matrix3::*;
-pub use matrix4::*;
-pub use quaternion::*;
-pub use vector2::*;
-pub use vector3::*;
+pub use import::Importer;
+pub use log::LogStream;
+pub use scene::{Scene, SceneConst, SceneMut};
 
-mod color3;
-mod color4;
-pub mod config;
-mod import;
-mod matrix3;
-mod matrix4;
-mod quaternion;
-mod vector2;
-mod vector3;
+pub mod export;
+pub mod import;
+mod log;
+pub mod math;
+pub mod scene;

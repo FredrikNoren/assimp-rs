@@ -1,20 +1,22 @@
-extern crate assimp_sys;
+extern crate assimp;
 extern crate cgmath;
 #[macro_use]
 extern crate glium;
 extern crate glutin;
-extern crate libc;
 
-use assimp_sys::*;
+use assimp::{Importer, LogStream, Scene};
+
 use cgmath::{perspective, Matrix4, deg, Vector3, Point3};
 use glutin::{Api, GlRequest};
-use std::ptr;
-use std::ffi::CString;
-use libc::c_uint;
+use glium::{DisplayBuild, Surface};
+
+macro_rules! default {
+    ($i:ident { $($k:ident: $v:expr),* }) => (
+        $i { $($k: $v),* , ..Default::default() }
+    )
+}
 
 fn main() {
-    use glium::{DisplayBuild, Surface};
-
     let display = glutin::WindowBuilder::new()
         .with_depth_buffer(24)
         .with_gl(GlRequest::Specific(Api::OpenGl, (3, 0)))
@@ -28,11 +30,10 @@ fn main() {
     }
     implement_vertex!(Vertex3, position, normal);
 
-    // Log assimp errors to stdout
-    unsafe {
-        let stream = aiGetPredefinedLogStream(AiDefaultLogStream::StdOut, ptr::null());
-        aiAttachLogStream(&stream);
-    }
+    // Setup logging
+    LogStream::set_verbose_logging(true);
+    let mut log_stream = LogStream::stdout();
+    log_stream.attach();
 
     // Load shaders
     let program = program!(&display,
@@ -67,51 +68,34 @@ fn main() {
         }
     ).unwrap();
 
-    // Load mesh from file
-    let cstr = CString::new("examples/spider.obj").unwrap().as_ptr();
-    let scene = unsafe { aiImportFile(cstr, AIPROCESS_TRIANGULATE) };
+    let mut importer = Importer::new();
+    importer.triangulate(true);
+    let scene = importer.read_file("examples/spider.obj").unwrap();
 
     let mut vertex_buffers = Vec::new();
     let mut index_buffers = Vec::new();
 
-    if !scene.is_null() {
-        // TODO: replace all of this madness with safe code when higher level API is written
-        unsafe {
-            let mesh_count = (*scene).num_meshes as usize;
-            vertex_buffers.reserve(mesh_count);
-            index_buffers.reserve(mesh_count);
+    for mesh in scene.meshes() {
+        // Normals iterator should always be the same length as vertices iterator
+        let normals = mesh.normals();
+        let verts: Vec<Vertex3> = mesh.vertices().iter().enumerate().map(|(i, &vert)|
+            Vertex3 { position: vert.into(), normal: normals[i].into() }
+        ).collect();
 
-            for i in 0..mesh_count {
-                let p = (*scene).meshes;
-                let ref mesh = *(*p.offset(i as isize));
+        // Create vertex buffer
+        let vb = glium::VertexBuffer::new(&display, verts);
+        vertex_buffers.push(vb);
 
-                let mut verts = Vec::with_capacity(mesh.num_vertices as usize);
-                for j in 0..mesh.num_vertices {
-                    let v = *mesh.vertices.offset(j as isize);
-                    let n = *mesh.normals.offset(j as isize);
-                    verts.push(Vertex3 {
-                        position: [v.x, v.y, v.z],
-                        normal: [n.x, n.y, n.z]
-                    });
-                }
-
-                let vb = glium::VertexBuffer::new(&display, verts);
-                vertex_buffers.push(vb);
-
-                // Safe to assume all faces are triangles due to triangulate option specified
-                // in scene loading
-                let mut indices = Vec::<c_uint>::with_capacity(mesh.num_faces as usize * 3);
-                for j in 0..mesh.num_faces {
-                    let ref f = *mesh.faces.offset(j as isize);
-                    indices.push(*f.indices.offset(0));
-                    indices.push(*f.indices.offset(1));
-                    indices.push(*f.indices.offset(2));
-                }
-
-                let ib = glium::IndexBuffer::new(&display, glium::index::TrianglesList(indices));
-                index_buffers.push(ib);
-            }
+        // Safe to assume all faces are triangles due to import options
+        let mut indices = Vec::with_capacity(mesh.num_faces() as usize * 3);
+        for face in mesh.faces() {
+            indices.push(face[0]);
+            indices.push(face[1]);
+            indices.push(face[2]);
         }
+
+        let ib = glium::IndexBuffer::new(&display, glium::index::TrianglesList(indices));
+        index_buffers.push(ib);
     }
 
     // Setup perspective camera
@@ -149,11 +133,5 @@ fn main() {
         }
 
         target.finish();
-    }
-
-    // Release assimp resources
-    unsafe {
-        aiReleaseImport(scene);
-        aiDetachAllLogStreams();
     }
 }

@@ -2,13 +2,12 @@ use std::ops::Deref;
 
 use cgmath::Quaternion as CgQuaternion;
 use ffi::AiQuaternion;
-use libc::c_float;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub struct Quaternion(AiQuaternion);
+pub struct Quaternion(pub AiQuaternion);
 
 impl Quaternion {
-    pub fn new(w: c_float, x: c_float, y: c_float ,z: c_float) -> Quaternion {
+    pub fn new(w: f32, x: f32, y: f32 ,z: f32) -> Quaternion {
         Quaternion(AiQuaternion {
             w: w,
             x: x,
@@ -18,14 +17,14 @@ impl Quaternion {
     }
 }
 
-impl From<CgQuaternion<c_float>> for Quaternion {
-    fn from(q: CgQuaternion<c_float>) -> Quaternion {
+impl From<CgQuaternion<f32>> for Quaternion {
+    fn from(q: CgQuaternion<f32>) -> Quaternion {
         Quaternion::new(q[0], q[1], q[2], q[3])
     }
 }
 
-impl Into<CgQuaternion<c_float>> for Quaternion {
-    fn into(self) -> CgQuaternion<c_float> {
+impl Into<CgQuaternion<f32>> for Quaternion {
+    fn into(self) -> CgQuaternion<f32> {
         CgQuaternion::new(self.0.w, self.0.x, self.0.y, self.0.z)
     }
 }
