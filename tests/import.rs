@@ -43,26 +43,10 @@ fn test_apply_postprocessing_success() {
 }
 
 #[test]
-fn test_apply_postprocessing_failure() {
-
-    // Dodgy way of testing apply_postprocessing failure to work around how Assimp works.
-    //
-    // Due to aiApplyPostProcessing only accepting new flags but not new properties, it is necessary
-    // to apply the property prior to the initial import then disable the flag, then re-enable the
-    // flag which will cause the reimport to use the initial types value.
-    //
-    // Luckily apply_postprocessing is very unlikely to fail in normal usage, so this workaround
-    // is only really necessary to deliberately cause failure for testing purposes.
-
+#[should_panic]
+fn test_sort_by_primitive_type_panic() {
     use assimp::import::structs::PrimitiveType::*;
-
     let mut importer = Importer::new();
     let all = vec![Point, Line, Triangle, Polygon];
     importer.sort_by_primitive_type(SortByPrimitiveTypeArgs { enable: true, types: all.clone() });
-    importer.sort_by_primitive_type(SortByPrimitiveTypeArgs { enable: false, types: all.clone() });
-    let scene = importer.read_file("examples/box.obj").unwrap();
-    importer.sort_by_primitive_type(SortByPrimitiveTypeArgs { enable: true, types: all.clone() });
-    importer.validate_data_structure(true);
-    let new_scene = importer.apply_postprocessing(scene);
-    assert!(new_scene.is_err());
 }

@@ -405,8 +405,11 @@ impl Importer {
     /// set in aiMesh::mPrimitiveTypes. This is especially useful for real-time rendering where
     /// point and line primitives are often ignored or rendered separately.
     ///
-    /// You can use the `components` property to specify which primitive types you need. This can be
+    /// You can use the `types` property to specify which primitive types you need. This can be
     /// used to easily exclude lines and points, which are rarely used, from the import.
+    ///
+    /// # Panics
+    /// Specifying all possible primitive types for removal is illegal and causes a panic.
     pub fn sort_by_primitive_type(&mut self, args: SortByPrimitiveTypeArgs) {
         use self::structs::PrimitiveType::*;
         self.set_import_flag(AIPROCESS_SORT_BY_PTYPE, args.enable);
@@ -419,6 +422,17 @@ impl Importer {
                     Polygon => AIPRIMITIVETYPE_POLYGON
                 }.bits()
             );
+
+            // Removing all primitives is a bad thing and causes Assimp to segfault when
+            // used in combination with `validate_data_structure` and `apply_postprocessing`.
+            if flags == (AIPRIMITIVETYPE_POINT |
+                         AIPRIMITIVETYPE_LINE |
+                         AIPRIMITIVETYPE_TRIANGLE |
+                         AIPRIMITIVETYPE_POLYGON)
+                         .bits() {
+                panic!("Trying to remove all possible primitive types is illegal.");
+            }
+
             self.set_int_property(PP_SBP_REMOVE, flags as i32);
         }
     }
