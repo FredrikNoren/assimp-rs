@@ -4,7 +4,7 @@ extern crate cgmath;
 extern crate glium;
 extern crate glutin;
 
-use assimp::{Importer, LogStream, Scene};
+use assimp::{Importer, LogStream};
 
 use cgmath::{perspective, Matrix4, deg, Vector3, Point3};
 use glutin::{Api, GlRequest};

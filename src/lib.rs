@@ -7,11 +7,14 @@ extern crate cgmath;
 extern crate libc;
 
 pub use import::Importer;
+pub use import::get_extension_list;
 pub use log::LogStream;
-pub use scene::{Scene, SceneConst, SceneMut};
+pub use math::{Color3D, Color4D, Matrix3x3, Matrix4x4, Quaternion, Vector2D, Vector3D};
+pub use scene::{Scene, SceneMut};
+pub use scene::{Mesh, Node};
 
 pub mod export;
 pub mod import;
-mod log;
+pub mod log;
 pub mod math;
 pub mod scene;

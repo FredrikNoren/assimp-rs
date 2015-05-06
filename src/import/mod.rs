@@ -23,6 +23,7 @@ use ffi::config::*;
 
 use math::matrix4::*;
 use scene::*;
+use scene::scene::SceneInternal;
 
 pub mod structs;
 use self::structs::*;
@@ -46,16 +47,16 @@ impl Importer {
 
     /// Load a scene from the specified file.
     ///
-    /// If the call succeeds, return value is `Ok`, containing the loaded `SceneConst` structure.
+    /// If the call succeeds, return value is `Ok`, containing the loaded `Scene` structure.
     /// If the call fails, return value is `Err`, containing the error string returned from
     /// the Assimp library.
-    pub fn read_file(&self, file: &str) -> Result<SceneConst, &str> {
+    pub fn read_file(&self, file: &str) -> Result<Scene, &str> {
         let cstr = CString::new(file).unwrap().as_ptr();
         let raw_scene = unsafe {
             aiImportFileExWithProperties(cstr, self.flags, ptr::null_mut(), self.property_store)
         };
         if !raw_scene.is_null() {
-            Ok(SceneConst::new(raw_scene))
+            Ok(Scene::new(raw_scene))
         } else {
             let error_str = unsafe { aiGetErrorString() };
             if error_str.is_null() {
@@ -84,7 +85,7 @@ impl Importer {
     /// # Return value
     /// The new scene, with new post-processing steps applied. Note that it is possible for this
     /// method to fail, in which case the return value is `Err`.
-    pub fn apply_postprocessing(&self, scene: SceneConst) -> Result<SceneConst, &str> {
+    pub fn apply_postprocessing(&self, scene: Scene) -> Result<Scene, &str> {
         let raw_scene = unsafe { aiApplyPostProcessing(scene.get_raw_ptr(), self.flags) };
         if !raw_scene.is_null() {
             // Return original scene, Assimp applies post-processing in-place so returning
