@@ -15,7 +15,14 @@ install:
 before_script:
   - rustc -V
   - cargo -V
+  - pip install 'travis-cargo<0.2' --user
+  - export PATH=$HOME/.local/bin:$PATH
 
-script:
-  - cargo build -v
-  - cargo test -v
+# note: nightly produces nicer docs right now...
+script: |
+  travis-cargo build &&
+  travis-cargo test &&
+  travis-cargo --only nightly doc
+
+after_success:
+  - travis-cargo --only nightly doc-upload
