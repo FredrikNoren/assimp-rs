@@ -10,10 +10,10 @@ license = "MIT"
 readme = "README.md"
 
 [dependencies]
-assimp-sys = "*"
-cgmath = "*"
-libc = "*"
+assimp-sys = "0.0.3"
+cgmath = "0.1.5"
+libc = "0.1.7"
 
 [dev-dependencies]
-glium = "*"
-glutin = "*"
+glium = "0.3.7"
+glutin = "0.1.3"
