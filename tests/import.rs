@@ -48,5 +48,5 @@ fn test_sort_by_primitive_type_panic() {
     use assimp::import::structs::PrimitiveType::*;
     let mut importer = Importer::new();
     let all = vec![Point, Line, Triangle, Polygon];
-    importer.sort_by_primitive_type(SortByPrimitiveTypeArgs { enable: true, types: all.clone() });
+    importer.sort_by_primitive_type(|x| { x.enable = true; x.remove = all.clone() });
 }

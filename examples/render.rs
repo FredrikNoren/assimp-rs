@@ -10,12 +10,6 @@ use cgmath::{perspective, Matrix4, deg, Vector3, Point3};
 use glutin::{Api, GlRequest};
 use glium::{DisplayBuild, Surface};
 
-macro_rules! default {
-    ($i:ident { $($k:ident: $v:expr),* }) => (
-        $i { $($k: $v),* , ..Default::default() }
-    )
-}
-
 fn main() {
     let display = glutin::WindowBuilder::new()
         .with_depth_buffer(24)
@@ -51,7 +45,7 @@ fn main() {
 
                 void main() {
                     v_normal = normal;
-                    gl_Position = persp_matrix * view_matrix * vec4(position * 0.005, 1.0);
+                    gl_Position = persp_matrix * view_matrix * vec4(position, 1.0);
                 }
             ",
 
@@ -70,6 +64,8 @@ fn main() {
 
     let mut importer = Importer::new();
     importer.triangulate(true);
+    importer.generate_normals(|x| x.enable = true);
+    importer.pre_transform_vertices(|x| { x.enable = true; x.normalize = true });
     let scene = importer.read_file("examples/spider.obj").unwrap();
 
     let mut vertex_buffers = Vec::new();
@@ -99,10 +95,10 @@ fn main() {
     }
 
     // Setup perspective camera
-    let eye = Point3::new(0.0, 1.0, 3.0);
+    let eye = Point3::new(0.0, 3.0, 3.0);
     let pos = Point3::new(0.0, 0.0, 0.0);
     let up = Vector3::new(0.0, 1.0, 0.0);
-    let persp_matrix: Matrix4<f32> = cgmath::perspective(deg(60.0), 1.333, 0.1, 1000.0);
+    let persp_matrix = cgmath::perspective(deg(60.0), 1.333, 0.1, 1000.0);
     let view_matrix = Matrix4::look_at(&eye, &pos, &up);
 
     let uniforms = uniform! {
@@ -121,7 +117,7 @@ fn main() {
         let params = glium::DrawParameters {
             depth_test: glium::DepthTest::IfLess,
             depth_write: true,
-            ..std::default::Default::default()
+            ..Default::default()
         };
 
         for i in 0..vertex_buffers.len() {

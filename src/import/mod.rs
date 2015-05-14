@@ -160,7 +160,10 @@ impl Importer {
     /// executed if you plan to use tangent space calculations such as normal mapping applied to the
     /// meshes. The `max_smoothing_angle` property allows you to specify a maximum smoothing angle
     /// for the algorithm. However, usually you'll want to leave it at the default value.
-    pub fn calc_tangent_space(&mut self, args: CalcTangentSpaceArgs) {
+    pub fn calc_tangent_space<F: Fn(&mut CalcTangentSpace)>(&mut self, closure: F) {
+        let mut args = CalcTangentSpace::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_CALC_TANGENT_SPACE, args.enable);
         if args.enable {
             self.set_float_property(PP_CT_MAX_SMOOTHING_ANGLE, args.max_smoothing_angle);
@@ -222,8 +225,12 @@ impl Importer {
     /// optimize the data because of these nasty little vertex colors. Most apps don't even process
     /// them, so it's all for nothing. By using this step, unneeded components are excluded as early
     /// as possible, thus opening more room for internal optimizations.
-    pub fn remove_component(&mut self, args: RemoveComponentArgs) {
+    pub fn remove_component<F: Fn(&mut RemoveComponent)>(&mut self, closure: F) {
         use self::structs::ComponentType::*;
+
+        let mut args = RemoveComponent::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_REMOVE_COMPONENT, args.enable);
         if args.enable {
             let flags = args.components.iter().fold(0, |x, &c|
@@ -258,7 +265,10 @@ impl Importer {
     /// allows you to specify an angle maximum for the normal smoothing algorithm. Normals exceeding
     /// this limit are not smoothed, resulting in a hard seam between two faces. Using a decent
     /// angle here (e.g. 80 degrees) results in very good visual appearance.
-    pub fn generate_normals(&mut self, args: GenerateNormalsArgs) {
+    pub fn generate_normals<F: Fn(&mut GenerateNormals)>(&mut self, closure: F) {
+        let mut args = GenerateNormals::default();
+        closure(&mut args);
+
         if args.enable {
             if args.smooth {
                 self.flags.insert(AIPROCESS_GEN_SMOOTH_NORMALS);
@@ -283,7 +293,10 @@ impl Importer {
     ///
     /// Note that splitting is generally a time-consuming task, but only if there's something to
     /// split. The use of this step is recommended for most users.
-    pub fn split_large_meshes(&mut self, args: SplitLargeMeshesArgs) {
+    pub fn split_large_meshes<F: Fn(&mut SplitLargeMeshes)>(&mut self, closure: F) {
+        let mut args = SplitLargeMeshes::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_SPLIT_LARGE_MESHES, args.enable);
         if args.enable {
             self.set_int_property(PP_SLM_TRIANGLE_LIMIT, args.triangle_limit);
@@ -303,7 +316,10 @@ impl Importer {
     /// problems: if e.g. a mesh of the asset contains normals and another, using the same material
     /// index, does not, they will be brought together, but the first meshes's part of the normal
     /// list is zeroed. However, these artifacts are rare.
-    pub fn pre_transform_vertices(&mut self, args: PreTransformVerticesArgs) {
+    pub fn pre_transform_vertices<F: Fn(&mut PreTransformVertices)>(&mut self, closure: F) {
+        let mut args = PreTransformVertices::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_PRE_TRANSFORM_VERTICES, args.enable);
         if args.enable {
             self.set_bool_property(PP_PTV_KEEP_HIERARCHY, args.keep_hierarchy);
@@ -322,7 +338,10 @@ impl Importer {
     ///
     /// If you intend to perform the skinning in hardware, this post processing step might be of
     /// interest to you.
-    pub fn limit_bone_weights(&mut self, args: LimitBoneWeightsArgs) {
+    pub fn limit_bone_weights<F: Fn(&mut LimitBoneWeights)>(&mut self, closure: F) {
+        let mut args = LimitBoneWeights::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_LIMIT_BONE_WEIGHTS, args.enable);
         if args.enable {
             self.set_int_property(PP_LBW_MAX_WEIGHTS, args.max_weights);
@@ -360,7 +379,10 @@ impl Importer {
     ///
     /// If you intend to render huge models in hardware, this step might be of interest to you.
     /// The `cache_size` property can be used to fine-tune the cache optimization.
-    pub fn improve_cache_locality(&mut self, args: ImproveCacheLocalityArgs) {
+    pub fn improve_cache_locality<F: Fn(&mut ImproveCacheLocality)>(&mut self, closure: F) {
+        let mut args = ImproveCacheLocality::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_IMPROVE_CACHE_LOCALITY, args.enable);
         if args.enable {
             self.set_int_property(PP_ICL_PTCACHE_SIZE, args.cache_size);
@@ -380,7 +402,10 @@ impl Importer {
     /// in all comparisons (e.g. the material name). So, if you're passing additional information
     /// through the content pipeline (probably using *magic* material names), don't specify this
     /// flag. Alternatively take a look at the  exclude_list` property.
-    pub fn remove_redudant_materials(&mut self, args: RemoveRedundantMaterialsArgs) {
+    pub fn remove_redudant_materials<F: Fn(&mut RemoveRedundantMaterials)>(&mut self, closure: F) {
+        let mut args = RemoveRedundantMaterials::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_REMOVE_REDUNDANT_MATERIALS, args.enable);
         if args.enable {
             self.set_string_property(PP_RRM_EXCLUDE_LIST, &args.exclude_list);
@@ -411,11 +436,15 @@ impl Importer {
     ///
     /// # Panics
     /// Specifying all possible primitive types for removal is illegal and causes a panic.
-    pub fn sort_by_primitive_type(&mut self, args: SortByPrimitiveTypeArgs) {
+    pub fn sort_by_primitive_type<F: Fn(&mut SortByPrimitiveType)>(&mut self, closure: F) {
         use self::structs::PrimitiveType::*;
+
+        let mut args = SortByPrimitiveType::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_SORT_BY_PTYPE, args.enable);
         if args.enable {
-            let flags = args.types.iter().fold(0, |x, &t|
+            let flags = args.remove.iter().fold(0, |x, &t|
                 x | match t {
                     Point => AIPRIMITIVETYPE_POINT,
                     Line => AIPRIMITIVETYPE_LINE,
@@ -459,7 +488,10 @@ impl Importer {
     /// Degenerate polygons are not necessarily evil and that's why they're not removed by default.
     /// There are several file formats which don't support lines or points, and some exporters
     /// bypass the format specification and write them as degenerate triangles instead.
-    pub fn find_degenerates(&mut self, args: FindDegeneratesArgs) {
+    pub fn find_degenerates<F: Fn(&mut FindDegenerates)>(&mut self, closure: F) {
+        let mut args = FindDegenerates::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_FIND_DEGENERATES, args.enable);
         if args.enable {
             self.set_bool_property(PP_FD_REMOVE, args.remove);
@@ -475,7 +507,10 @@ impl Importer {
     /// The step will also remove meshes that are infinitely small and reduce animation tracks
     /// consisting of hundreds if redundant keys to a single key.
     /// The `accuracy` property decides the accuracy of the check for duplicate animation tracks.
-    pub fn find_invalid_data(&mut self, args: FindInvalidDataArgs) {
+    pub fn find_invalid_data<F: Fn(&mut FindInvalidData)>(&mut self, closure: F) {
+        let mut args = FindInvalidData::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_FIND_INVALID_DATA, args.enable);
         if args.enable {
             self.set_float_property(PP_FID_ANIM_ACCURACY, args.accuracy);
@@ -508,8 +543,12 @@ impl Importer {
     ///
     /// UV transformations are usually implemented in real-time apps by transforming texture
     /// coordinates at vertex shader stage with a 3x3 (homogenous) transformation matrix.
-    pub fn transform_uv_coords(&mut self, args: TransformUVCoordsArgs) {
+    pub fn transform_uv_coords<F: Fn(&mut TransformUVCoords)>(&mut self, closure: F) {
         use self::structs::UVTransformFlag::*;
+
+        let mut args = TransformUVCoords::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_TRANSFORM_UV_COORDS, args.enable);
         if args.enable {
             let flags = args.flags.iter().fold(0, |x, &f|
@@ -566,7 +605,10 @@ impl Importer {
     /// 'Crappy' scenes with thousands of extremely small meshes packed in deeply nested nodes exist
     /// for almost all file formats. `optimize_meshes` in combination with `optimize_graph`
     /// usually fixes them all and makes them renderable.
-    pub fn optimize_graph(&mut self, args: OptimizeGraphArgs) {
+    pub fn optimize_graph<F: Fn(&mut OptimizeGraph)>(&mut self, closure: F) {
+        let mut args = OptimizeGraph::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_OPTIMIZE_GRAPH, args.enable);
         if args.enable {
             self.set_string_property(PP_OG_EXCLUDE_LIST, &args.exclude_list);
@@ -609,7 +651,10 @@ impl Importer {
 
     /// This step splits meshes with many bones into sub-meshes so that each submesh has fewer or
     /// as many bones as a given limit.
-    pub fn split_by_bone_count(&mut self, args: SplitByBoneCountArgs) {
+    pub fn split_by_bone_count<F: Fn(&mut SplitByBoneCount)>(&mut self, closure: F) {
+        let mut args = SplitByBoneCount::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_SPLIT_BY_BONE_COUNT, args.enable);
         if args.enable {
             self.set_int_property(PP_SBBC_MAX_BONES, args.max_bones);
@@ -626,7 +671,10 @@ impl Importer {
     /// Use the `threshold` property to control this.
     /// Use the `all_or_none` property if you want bones removed if and only if all bones within the
     /// scene qualify for removal.
-    pub fn debone(&mut self, args: DeboneArgs) {
+    pub fn debone<F: Fn(&mut Debone)>(&mut self, closure: F) {
+        let mut args = Debone::default();
+        closure(&mut args);
+
         self.set_import_flag(AIPROCESS_DEBONE, args.enable);
         if args.enable {
             self.set_float_property(PP_DB_THRESHOLD, args.threshold);
