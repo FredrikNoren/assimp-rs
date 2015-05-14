@@ -1051,3 +1051,9 @@ pub fn get_extension_list() -> Vec<String> {
     let extensions = ext_list.as_ref().split(';');
     extensions.map(|x| x.trim_left_matches("*.").to_owned()).collect()
 }
+
+impl Drop for Importer {
+    fn drop(&mut self) {
+        unsafe { aiReleasePropertyStore(self.property_store) }
+    }
+}
