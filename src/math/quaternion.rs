@@ -1,19 +1,15 @@
-use std::ops::Deref;
-
 use cgmath::Quaternion as CgQuaternion;
 use ffi::AiQuaternion;
 
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct Quaternion(pub AiQuaternion);
+define_type! {
+    /// Quaternion docs
+    #[derive(Clone, Copy, Debug, PartialEq)]
+    struct Quaternion(AiQuaternion)
+}
 
 impl Quaternion {
     pub fn new(w: f32, x: f32, y: f32 ,z: f32) -> Quaternion {
-        Quaternion(AiQuaternion {
-            w: w,
-            x: x,
-            y: y,
-            z: z
-        })
+        Quaternion(AiQuaternion { w: w, x: x, y: y, z: z })
     }
 }
 
@@ -25,14 +21,6 @@ impl From<CgQuaternion<f32>> for Quaternion {
 
 impl Into<CgQuaternion<f32>> for Quaternion {
     fn into(self) -> CgQuaternion<f32> {
-        CgQuaternion::new(self.0.w, self.0.x, self.0.y, self.0.z)
-    }
-}
-
-impl Deref for Quaternion {
-    type Target = AiQuaternion;
-
-    fn deref<'a>(&'a self) -> &'a AiQuaternion {
-        &self.0
+        CgQuaternion::new(self.w, self.x, self.y, self.z)
     }
 }

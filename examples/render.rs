@@ -62,36 +62,42 @@ fn main() {
         }
     ).unwrap();
 
-    let mut importer = Importer::new();
-    importer.triangulate(true);
-    importer.generate_normals(|x| x.enable = true);
-    importer.pre_transform_vertices(|x| { x.enable = true; x.normalize = true });
-    let scene = importer.read_file("examples/spider.obj").unwrap();
-
     let mut vertex_buffers = Vec::new();
     let mut index_buffers = Vec::new();
 
-    for mesh in scene.meshes() {
-        // Normals iterator should always be the same length as vertices iterator
-        let normals = mesh.normals();
-        let verts: Vec<Vertex3> = mesh.vertices().iter().enumerate().map(|(i, &vert)|
-            Vertex3 { position: vert.into(), normal: normals[i].into() }
-        ).collect();
+    {
+        let mut importer = Importer::new();
+        importer.triangulate(true);
+        importer.generate_normals(|x| x.enable = true);
+        importer.pre_transform_vertices(|x| {
+            x.enable = true;
+            x.normalize = true
+        });
+        let scene = importer.read_file("examples/spider.obj").unwrap();
 
-        // Create vertex buffer
-        let vb = glium::VertexBuffer::new(&display, verts);
-        vertex_buffers.push(vb);
+        for mesh in scene.mesh_iter() {
+            let verts: Vec<Vertex3> = mesh.vertex_iter().zip(mesh.normal_iter()).map(|(v, n)|
+                Vertex3 {
+                    position: v.into(),
+                    normal: n.into()
+                }
+            ).collect();
 
-        // Safe to assume all faces are triangles due to import options
-        let mut indices = Vec::with_capacity(mesh.num_faces() as usize * 3);
-        for face in mesh.faces() {
-            indices.push(face[0]);
-            indices.push(face[1]);
-            indices.push(face[2]);
+            // Create vertex buffer
+            let vb = glium::VertexBuffer::new(&display, verts);
+            vertex_buffers.push(vb);
+
+            // Safe to assume all faces are triangles due to import options
+            let mut indices = Vec::with_capacity(mesh.num_faces() as usize * 3);
+            for face in mesh.face_iter() {
+                indices.push(face[0]);
+                indices.push(face[1]);
+                indices.push(face[2]);
+            }
+
+            let ib = glium::IndexBuffer::new(&display, glium::index::TrianglesList(indices));
+            index_buffers.push(ib);
         }
-
-        let ib = glium::IndexBuffer::new(&display, glium::index::TrianglesList(indices));
-        index_buffers.push(ib);
     }
 
     // Setup perspective camera

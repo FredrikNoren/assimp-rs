@@ -1,10 +1,11 @@
-use std::ops::Deref;
-
 use cgmath::Matrix4;
 use ffi::AiMatrix4x4;
 
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct Matrix4x4(pub AiMatrix4x4);
+define_type! {
+    /// Matrix4x4 docs
+    #[derive(Clone, Copy, Debug, PartialEq)]
+    struct Matrix4x4(AiMatrix4x4)
+}
 
 impl Matrix4x4 {
     pub fn new(c0r0: f32, c0r1: f32, c0r2: f32, c0r3: f32,
@@ -31,17 +32,9 @@ impl From<Matrix4<f32>> for Matrix4x4 {
 
 impl Into<Matrix4<f32>> for Matrix4x4 {
     fn into(self) -> Matrix4<f32> {
-        Matrix4::new(self.0.a1, self.0.b1, self.0.c1, self.0.d1,
-                     self.0.a2, self.0.b2, self.0.c2, self.0.d2,
-                     self.0.a3, self.0.b3, self.0.c3, self.0.d3,
-                     self.0.a4, self.0.b4, self.0.c4, self.0.d4)
-    }
-}
-
-impl Deref for Matrix4x4 {
-    type Target = AiMatrix4x4;
-
-    fn deref<'a>(&'a self) -> &'a AiMatrix4x4 {
-        &self.0
+        Matrix4::new(self.a1, self.b1, self.c1, self.d1,
+                     self.a2, self.b2, self.c2, self.d2,
+                     self.a3, self.b3, self.c3, self.d3,
+                     self.a4, self.b4, self.c4, self.d4)
     }
 }

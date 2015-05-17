@@ -1,24 +1,8 @@
-use std::ops::Deref;
-
 use ffi::AiCamera;
 
-// TODO mutable camera type
-pub struct Camera(*const AiCamera);
-
-#[doc(hidden)]
-pub trait CameraInternal {
-    fn new(raw_camera: *const AiCamera) -> Camera {
-        Camera(raw_camera)
-    }
-}
-
-impl CameraInternal for Camera {}
-
-// TODO remove deref when types are implemented
-impl Deref for Camera {
-    type Target = AiCamera;
-
-    fn deref<'a>(&'a self) -> &'a AiCamera {
-        unsafe { &*self.0 }
-    }
+define_type_and_iterator_indirect! {
+    /// Camera type (not yet implemented)
+    struct Camera(&AiCamera)
+    /// Camera iterator type.
+    struct CameraIter
 }

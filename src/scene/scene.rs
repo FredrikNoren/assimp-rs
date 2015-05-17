@@ -1,30 +1,20 @@
-use std::ops::Deref;
-use std::ptr;
-use std::slice::from_raw_parts;
-
 use ffi::*;
 
-// Import all types (and internal traits for instantiating them)
-use super::animation::{Animation, AnimationInternal};
-use super::camera::{Camera, CameraInternal};
-use super::face::{Face, FaceInternal};
-use super::light::{Light, LightInternal};
-use super::material::{Material, MaterialInternal};
-use super::mesh::{Mesh, MeshInternal};
-use super::node::{Node, NodeInternal};
-use super::texture::{Texture, TextureInternal};
+// Import all types
+use super::animation::{Animation, AnimationIter};
+use super::camera::{Camera, CameraIter};
+use super::light::{Light, LightIter};
+use super::material::{Material, MaterialIter};
+use super::mesh::{Mesh, MeshIter};
+use super::node::Node;
+use super::texture::{Texture, TextureIter};
 
-/// The `Scene` type represents immutable scene data.
-pub struct Scene(*const AiScene);
-/// The `SceneMut` type represents mutable scene data.
-pub struct SceneMut(*mut AiScene);
+define_type! {
+    /// The `Scene` type is the root container for all imported scene data.
+    struct Scene(&AiScene)
+}
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Immutable scene methods
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-impl Scene {
+impl<'a> Scene<'a> {
     /// Returns true if the imported scene is not complete.
     pub fn is_incomplete(&self) -> bool {
         self.flags.contains(AI_SCENE_FLAGS_INCOMPLETE)
@@ -54,7 +44,7 @@ impl Scene {
 
     /// Returns the root node of the scene hierarchy
     pub fn root_node(&self) -> Node {
-        Node::new(self.root_node)
+        Node::from_raw(self.root_node)
     }
 
     /// Returns the number of meshes in the scene.
@@ -62,18 +52,19 @@ impl Scene {
         self.num_meshes
     }
 
-    /// Returns a vector containing all of the meshes in the scene
-    pub fn meshes(&self) -> Vec<Mesh> {
-        let len = self.num_meshes as usize;
-        unsafe { from_raw_parts(self.meshes, len).iter().map(|x| Mesh::new(*x)).collect() }
+    /// Returns an iterator over all the meshes in the scene.
+    pub fn mesh_iter(&self) -> MeshIter {
+        MeshIter::new(self.meshes as *const *const AiMesh,
+                      self.num_meshes as usize)
     }
 
     /// Return an individual mesh from the scene.
-    ///
-    /// Panics if `id` is invalid.
-    pub fn mesh(&self, id: usize) -> Mesh {
-        assert!(id < self.num_meshes as usize);
-        unsafe { Mesh::new(*(self.meshes.offset(id as isize))) }
+    pub fn mesh(&self, id: usize) -> Option<Mesh> {
+        if id < self.num_meshes as usize {
+            unsafe { Some(Mesh::from_raw(*(self.meshes.offset(id as isize)))) }
+        } else {
+            None
+        }
     }
 
     /// Returns the number of materials in the scene.
@@ -81,10 +72,10 @@ impl Scene {
         self.num_materials
     }
 
-    /// Returns a vector containing all of the materials in the scene.
-    pub fn materials(&self) -> Vec<Material> {
-        let len = self.num_materials as usize;
-        unsafe { from_raw_parts(self.materials, len).iter().map(|x| Material::new(*x)).collect() }
+    /// Returns an iterator over all the materials in the scene.
+    pub fn material_iter(&self) -> MaterialIter {
+        MaterialIter::new(self.materials as *const *const AiMaterial,
+                          self.num_materials as usize)
     }
 
     /// Returns the number of animations in the scene.
@@ -92,10 +83,10 @@ impl Scene {
         self.num_animations
     }
 
-    /// Returns a vector containing all of the animations in the scene.
-    pub fn animations(&self) -> Vec<Animation> {
-        let len = self.num_animations as usize;
-        unsafe { from_raw_parts(self.animations, len).iter().map(|x| Animation::new(*x)).collect() }
+    /// Returns an iterator over all the animations in the scene.
+    pub fn animation_iter(&self) -> AnimationIter {
+        AnimationIter::new(self.animations as *const *const AiAnimation,
+                           self.num_animations as usize)
     }
 
     /// Returns the number of animations in the scene.
@@ -103,12 +94,10 @@ impl Scene {
         self.num_textures
     }
 
-    /// Returns a vector containing all of the textures in the scene.
-    pub fn textures(&self) -> Vec<Texture> {
-        unsafe {
-            let len = self.num_textures as usize;
-            from_raw_parts(self.textures, len).iter().map(|x| Texture::new(*x)).collect()
-        }
+    /// Returns an iterator over all the textures in the scene.
+    pub fn texture_iter(&self) -> TextureIter {
+        TextureIter::new(self.textures as *const *const AiTexture,
+                         self.num_textures as usize)
     }
 
     /// Returns the number of lights in the scene.
@@ -116,10 +105,10 @@ impl Scene {
         self.num_lights
     }
 
-    /// Returns a vector containing all of the lights in the scene.
-    pub fn lights(&self) -> Vec<Light> {
-        let len = self.num_lights as usize;
-        unsafe { from_raw_parts(self.lights, len).iter().map(|x| Light::new(*x)).collect() }
+    /// Returns an iterator over all the lights in the scene.
+    pub fn light_iter(&self) -> LightIter {
+        LightIter::new(self.lights as *const *const AiLight,
+                       self.num_lights as usize)
     }
 
     /// Returns the number of cameras in the scene.
@@ -127,95 +116,17 @@ impl Scene {
         self.num_cameras
     }
 
-    /// Returns a vector containing all of the cameras in the scene
-    pub fn cameras(&self) -> Vec<Camera> {
-        let len = self.num_cameras as usize;
-        unsafe { from_raw_parts(self.cameras, len).iter().map(|x| Camera::new(*x)).collect() }
-    }
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Mutable scene methods
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-impl SceneMut {
-    // TODO
-}
-
-impl Deref for SceneMut {
-    type Target = Scene;
-    fn deref<'a>(&'a self) -> &'a Scene {
-        unsafe { ::std::mem::transmute(self) }
-    }
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Implement standard traits
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Conversion into a mutable version of the scene
-impl From<Scene> for SceneMut {
-    fn from(scene: Scene) -> SceneMut {
-        let mut new_scene = ptr::null_mut();
-        unsafe { aiCopyScene(scene.0, &mut new_scene) };
-        SceneMut(new_scene)
+    /// Returns an iterator over all the cameras in the scene.
+    pub fn camera_iter(&self) -> CameraIter {
+        CameraIter::new(self.cameras as *const *const AiCamera,
+                        self.num_cameras as usize)
     }
 }
 
 // Drop implementation for a scene owned by Assimp.
 // Scenes returned by aiImportFile* methods must be freed with aiReleaseImport.
-impl Drop for Scene {
+impl<'a> Drop for Scene<'a> {
     fn drop(&mut self) {
         unsafe { aiReleaseImport(self.0); }
     }
-}
-
-// Drop implementation for a scene not owned by Assimp.
-// Scenes returned by aiCopyScene must be freed with aiFreeScene.
-impl Drop for SceneMut {
-    fn drop(&mut self) {
-        unsafe { aiFreeScene(self.0); }
-    }
-}
-
-#[doc(hidden)]
-mod private {
-    use std::ops::Deref;
-    use ffi::AiScene;
-
-    impl Deref for super::Scene {
-        type Target = AiScene;
-        fn deref<'a>(&'a self) -> &'a AiScene { unsafe { &*self.0 } }
-    }
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Internal implementation details
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#[doc(hidden)]
-pub trait SceneInternal {
-    fn new(raw_scene: *const AiScene) -> Scene { Scene(raw_scene) }
-    fn get_raw_ptr(&self) -> *const AiScene;
-}
-
-#[doc(hidden)]
-pub trait SceneMutInternal: SceneInternal {
-    fn new(raw_scene: *mut AiScene) -> SceneMut { SceneMut(raw_scene) }
-    fn get_raw_ptr_mut(&mut self) -> *mut AiScene;
-}
-
-impl SceneInternal for Scene {
-    fn get_raw_ptr(&self) -> *const AiScene { self.0 }
-}
-
-impl SceneInternal for SceneMut {
-    fn get_raw_ptr(&self) -> *const AiScene { self.0 }
-}
-
-impl SceneMutInternal for SceneMut {
-    fn get_raw_ptr_mut(&mut self) -> *mut AiScene { self.0 }
 }

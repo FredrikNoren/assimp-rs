@@ -23,7 +23,6 @@ use ffi::config::*;
 
 use math::matrix4::*;
 use scene::*;
-use scene::scene::SceneInternal;
 
 pub mod structs;
 use self::structs::*;
@@ -50,13 +49,13 @@ impl Importer {
     /// If the call succeeds, return value is `Ok`, containing the loaded `Scene` structure.
     /// If the call fails, return value is `Err`, containing the error string returned from
     /// the Assimp library.
-    pub fn read_file(&self, file: &str) -> Result<Scene, &str> {
+    pub fn read_file<'a>(&self, file: &str) -> Result<Scene<'a>, &str> {
         let cstr = CString::new(file).unwrap().as_ptr();
         let raw_scene = unsafe {
             aiImportFileExWithProperties(cstr, self.flags, ptr::null_mut(), self.property_store)
         };
         if !raw_scene.is_null() {
-            Ok(Scene::new(raw_scene))
+            Ok(Scene::from_raw(raw_scene))
         } else {
             let error_str = unsafe { aiGetErrorString() };
             if error_str.is_null() {
@@ -85,8 +84,8 @@ impl Importer {
     /// # Return value
     /// The new scene, with new post-processing steps applied. Note that it is possible for this
     /// method to fail, in which case the return value is `Err`.
-    pub fn apply_postprocessing(&self, scene: Scene) -> Result<Scene, &str> {
-        let raw_scene = unsafe { aiApplyPostProcessing(scene.get_raw_ptr(), self.flags) };
+    pub fn apply_postprocessing<'a>(&'a self, scene: Scene<'a>) -> Result<Scene, &str> {
+        let raw_scene = unsafe { aiApplyPostProcessing(scene.to_raw(), self.flags) };
         if !raw_scene.is_null() {
             // Return original scene, Assimp applies post-processing in-place so returning
             // a new scene object would cause the scene to get double-dropped.
@@ -94,7 +93,7 @@ impl Importer {
         } else {
             // Assimp frees the scene on failure, dropping would cause the memory to be
             // freed twice so use mem::forget to prevent that happening.
-            unsafe { mem::forget(scene) };
+            mem::forget(scene);
             Err("apply_postprocessing failed, see output log for errors.")
         }
     }

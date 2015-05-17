@@ -2,12 +2,11 @@ extern crate assimp;
 extern crate cgmath;
 extern crate libc;
 use assimp::math::*;
-use cgmath::{Matrix3, Matrix4, Point3, Vector3, Vector4};
-use cgmath::Quaternion as CgQuaternion;
 use libc::c_float;
 
 #[test]
 fn test_matrix3_conversion() {
+    use cgmath::Matrix3;
     let m1 = Matrix3::new(1.0, 2.0, 3.0,
                           4.0, 5.0, 6.0,
                           7.0, 8.0, 9.0);
@@ -24,6 +23,7 @@ fn test_matrix3_conversion() {
 
 #[test]
 fn test_matrix4_conversion() {
+    use cgmath::Matrix4;
     let m1 = Matrix4::new(1.0, 2.0, 3.0, 4.0,
                           5.0, 6.0, 7.0, 8.0,
                           9.0, 10.0, 11.0, 12.0,
@@ -42,55 +42,91 @@ fn test_matrix4_conversion() {
 
 #[test]
 fn test_quaternion_conversion() {
-    let q1 = CgQuaternion::new(1.0, 2.0, 3.0, 4.0);
-    let q2 = Quaternion::new(1.0, 2.0, 3.0, 4.0);
-    let q3 = Quaternion::from(q1);
-    let q4: CgQuaternion<c_float> = q2.into();
+    use cgmath::Quaternion as CgQuaternion;
 
-    assert_eq!(q1, q4);
-    assert_eq!(q2, q3);
+    // cgmath quaternion
+    let q1 = CgQuaternion::new(1.0, 2.0, 3.0, 4.0);
+    let q2 = Quaternion::from(q1);
+    let q3: CgQuaternion<c_float> = q2.into();
+    assert_eq!(q1, q3);
+}
+
+#[test]
+fn test_vector2_conversion() {
+    use cgmath::{Point2, Vector2};
+
+    // cgmath vector
+    let v1 = Vector2::new(1.0, 2.0);
+    let v2 = Vector2D::from(v1);
+    let v3: Vector2<f32> = v2.into();
+    assert_eq!(v1, v3);
+
+    // cgmath point
+    let v1 = Point2::new(1.0, 2.0);
+    let v2 = Vector2D::from(v1);
+    let v3: Point2<f32> = v2.into();
+    assert_eq!(v1, v3);
+
+    // fixed array type
+    let v1 = [1.0, 2.0];
+    let v2 = Vector2D::from(v1);
+    let v3: [f32; 2] = v2.into();
+    assert_eq!(v1, v3);
 }
 
 #[test]
 fn test_vector3_conversion() {
+    use cgmath::{Point3, Vector3};
+
+    // cgmath vector
     let v1 = Vector3::new(1.0, 2.0, 3.0);
-    let v2 = Vector3D::new(1.0, 2.0, 3.0);
-    let v3 = Vector3D::from(v1);
-    let v4: Vector3<c_float> = v2.into();
+    let v2 = Vector3D::from(v1);
+    let v3: Vector3<f32> = v2.into();
+    assert_eq!(v1, v3);
 
-    assert_eq!(v1, v4);
-    assert_eq!(v2, v3);
-}
-
-#[test]
-fn test_point3_conversion() {
+    // cgmath point
     let v1 = Point3::new(1.0, 2.0, 3.0);
-    let v2 = Vector3D::new(1.0, 2.0, 3.0);
-    let v3 = Vector3D::from(v1);
-    let v4: Point3<c_float> = v2.into();
+    let v2 = Vector3D::from(v1);
+    let v3: Point3<f32> = v2.into();
+    assert_eq!(v1, v3);
 
-    assert_eq!(v1, v4);
-    assert_eq!(v2, v3);
+    // fixed array type
+    let v1 = [1.0, 2.0, 3.0];
+    let v2 = Vector3D::from(v1);
+    let v3: [f32; 3] = v2.into();
+    assert_eq!(v1, v3);
 }
 
 #[test]
 fn test_color3_conversion() {
-    let v1 = Vector3::new(1.0, 2.0, 3.0);
-    let v2 = Color3D::new(1.0, 2.0, 3.0);
-    let v3 = Color3D::from(v1);
-    let v4: Vector3<c_float> = v2.into();
+    use cgmath::Vector3;
 
-    assert_eq!(v1, v4);
-    assert_eq!(v2, v3);
+    // cgmath vector
+    let v1 = Vector3::new(1.0, 2.0, 3.0);
+    let v2 = Color3D::from(v1);
+    let v3: Vector3<f32> = v2.into();
+    assert_eq!(v1, v3);
+
+    // fixed array type
+    let v1 = [1.0, 2.0, 3.0];
+    let v2 = Color3D::from(v1);
+    let v3: [f32; 3] = v2.into();
+    assert_eq!(v1, v3);
 }
 
 #[test]
 fn test_color4_conversion() {
-    let v1 = Vector4::new(1.0, 2.0, 3.0, 4.0);
-    let v2 = Color4D::new(1.0, 2.0, 3.0, 4.0);
-    let v3 = Color4D::from(v1);
-    let v4: Vector4<c_float> = v2.into();
+    use cgmath::Vector4;
 
-    assert_eq!(v1, v4);
-    assert_eq!(v2, v3);
+    // cgmath vector
+    let v1 = Vector4::new(1.0, 2.0, 3.0, 4.0);
+    let v2 = Color4D::from(v1);
+    let v3: Vector4<f32> = v2.into();
+    assert_eq!(v1, v3);
+
+    // fixed array type
+    let v1 = [1.0, 2.0, 3.0, 4.0];
+    let v2 = Color4D::from(v1);
+    let v3: [f32; 4] = v2.into();
+    assert_eq!(v1, v3);
 }

@@ -1,18 +1,23 @@
-use std::ops::Deref;
-
 use cgmath::{Point3, Vector3};
 use ffi::AiVector3D;
 
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct Vector3D(pub AiVector3D);
+define_type_and_iterator! {
+    /// Vector3D docs
+    #[derive(Clone, Copy, Debug, PartialEq)]
+    struct Vector3D(AiVector3D)
+    /// Vector3DIter docs
+    struct Vector3DIter
+}
 
 impl Vector3D {
     pub fn new(x: f32, y: f32, z: f32) -> Vector3D {
-        Vector3D(AiVector3D {
-            x: x,
-            y: y,
-            z: z
-        })
+        Vector3D(AiVector3D { x: x, y: y, z: z })
+    }
+}
+
+impl From<[f32; 3]> for Vector3D {
+    fn from(v: [f32; 3]) -> Vector3D {
+        Vector3D::new(v[0], v[1], v[2])
     }
 }
 
@@ -45,19 +50,3 @@ impl Into<Vector3<f32>> for Vector3D {
         Vector3::new(self.x, self.y, self.z)
     }
 }
-
-impl Deref for Vector3D {
-    type Target = AiVector3D;
-
-    fn deref<'a>(&'a self) -> &'a AiVector3D {
-        &self.0
-    }
-}
-
-pub trait Vector3DInternal {
-    fn from_raw(raw_vector: *const AiVector3D) -> Vector3D {
-        unsafe { Vector3D(*raw_vector) }
-    }
-}
-
-impl Vector3DInternal for Vector3D {}

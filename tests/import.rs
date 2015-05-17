@@ -1,9 +1,6 @@
 extern crate assimp;
-extern crate assimp_sys;
-extern crate cgmath;
 
 use assimp::*;
-use assimp::import::structs::*;
 
 #[test]
 fn test_get_extension_list() {
@@ -24,14 +21,6 @@ fn test_import_from_file_failure() {
     let importer = Importer::new();
     let scene = importer.read_file("examples/non_existent_file.obj");
     assert!(scene.is_err());
-}
-
-#[test]
-fn test_convert_to_mut() {
-    let importer = Importer::new();
-    let scene = importer.read_file("examples/box.obj").unwrap();
-    let scene_mut = SceneMut::from(scene);
-    assert_eq!(scene_mut.num_meshes(), 1);
 }
 
 #[test]

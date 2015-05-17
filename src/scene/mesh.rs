@@ -1,79 +1,76 @@
-use std::slice::from_raw_parts;
+use ffi::{AiMesh, AiVector3D};
 
-use ffi::AiMesh;
-use libc::c_uint;
+use math::vector3::{Vector3D, Vector3DIter};
+use super::face::{Face, FaceIter};
 
-use math::vector3::*;
-use super::face::*;
+define_type_and_iterator_indirect! {
+    /// Mesh type (incomplete)
+    struct Mesh(&AiMesh)
+    /// Mesh iterator type.
+    struct MeshIter
+}
 
-// TODO mutable mesh type
-pub struct Mesh(*const AiMesh);
-
-impl Mesh {
-    #[inline]
-    fn inner(&self) -> &AiMesh {
-        unsafe { &*self.0 }
-    }
-
+impl<'a> Mesh<'a> {
     // TODO return as PrimitiveType enum
     pub fn primitive_types(&self) -> u32 {
-        self.inner().primitive_types
+        self.primitive_types
     }
 
-    pub fn num_vertices(&self) -> c_uint {
-        self.inner().num_vertices
+    pub fn num_vertices(&self) -> u32 {
+        self.num_vertices
     }
 
-    pub fn num_faces(&self) -> c_uint {
-        self.inner().num_faces
+    pub fn vertex_iter(&self) -> Vector3DIter {
+        Vector3DIter::new(self.vertices,
+                          self.num_vertices as usize)
     }
 
-    pub fn vertices(&self) -> Vec<Vector3D> {
-        let raw = self.inner();
-        let len = raw.num_vertices as usize;
-        unsafe {
-            from_raw_parts(raw.vertices, len).iter().map(|x| Vector3D::from_raw(x)).collect()
-        }
+    pub fn get_vertex(&self, id: u32) -> Option<Vector3D> {
+        self.vertex_data(self.vertices, id)
     }
 
-    pub fn normals(&self) -> Vec<Vector3D> {
-        let raw = self.inner();
-        let len = raw.num_vertices as usize;
-        unsafe {
-            from_raw_parts(raw.normals, len).iter().map(|x| Vector3D::from_raw(x)).collect()
-        }
+    pub fn normal_iter(&self) -> Vector3DIter {
+        Vector3DIter::new(self.normals,
+                          self.num_vertices as usize)
     }
 
-    pub fn tangents(&self) -> Vec<Vector3D> {
-        let raw = self.inner();
-        let len = raw.num_vertices as usize;
-        unsafe {
-            from_raw_parts(raw.tangents, len).iter().map(|x| Vector3D::from_raw(x)).collect()
-        }
+    pub fn get_normal(&self, id: u32) -> Option<Vector3D> {
+        self.vertex_data(self.normals, id)
     }
 
-    pub fn bitangents(&self) -> Vec<Vector3D> {
-        let raw = self.inner();
-        let len = raw.num_vertices as usize;
-        unsafe {
-            from_raw_parts(raw.bitangents, len).iter().map(|x| Vector3D::from_raw(x)).collect()
-        }
+    pub fn tangent_iter(&self) -> Vector3DIter {
+        Vector3DIter::new(self.tangents,
+                          self.num_vertices as usize)
     }
 
-    pub fn faces(&self) -> Vec<Face> {
-        let raw = self.inner();
-        let len = raw.num_faces as usize;
-        unsafe {
-            from_raw_parts(raw.faces, len).iter().map(|x| Face::new(x)).collect()
+    pub fn get_tangent(&self, id: u32) -> Option<Vector3D> {
+        self.vertex_data(self.tangents, id)
+    }
+
+    pub fn bitangent_iter(&self) -> Vector3DIter {
+        Vector3DIter::new(self.bitangents,
+                          self.num_vertices as usize)
+    }
+
+    pub fn get_bitangent(&self, id: u32) -> Option<Vector3D> {
+        self.vertex_data(self.bitangents, id)
+    }
+
+    pub fn num_faces(&self) -> u32 {
+        self.num_faces
+    }
+
+    pub fn face_iter(&self) -> FaceIter {
+        FaceIter::new(self.faces,
+                      self.num_faces as usize)
+    }
+
+    #[inline]
+    fn vertex_data(&self, array: *mut AiVector3D, id: u32) -> Option<Vector3D> {
+        if id < self.num_vertices {
+            unsafe { Some(Vector3D::from_raw(array.offset(id as isize))) }
+        } else {
+            None
         }
     }
 }
-
-#[doc(hidden)]
-pub trait MeshInternal {
-    fn new(raw_mesh: *const AiMesh) -> Mesh {
-        Mesh(raw_mesh)
-    }
-}
-
-impl MeshInternal for Mesh {}

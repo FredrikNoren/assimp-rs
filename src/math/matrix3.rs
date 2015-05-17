@@ -1,10 +1,11 @@
-use std::ops::Deref;
-
 use cgmath::Matrix3;
 use ffi::AiMatrix3x3;
 
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct Matrix3x3(pub AiMatrix3x3);
+define_type! {
+    /// Matrix3x3 docs
+    #[derive(Clone, Copy, Debug, PartialEq)]
+    struct Matrix3x3(AiMatrix3x3)
+}
 
 impl Matrix3x3 {
     pub fn new(c0r0: f32, c0r1: f32, c0r2: f32,
@@ -31,13 +32,5 @@ impl Into<Matrix3<f32>> for Matrix3x3 {
         Matrix3::new(self.a1, self.b1, self.c1,
                      self.a2, self.b2, self.c2,
                      self.a3, self.b3, self.c3)
-    }
-}
-
-impl Deref for Matrix3x3 {
-    type Target = AiMatrix3x3;
-
-    fn deref<'a>(&'a self) -> &'a AiMatrix3x3 {
-        &self.0
     }
 }
