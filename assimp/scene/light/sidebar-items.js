@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Light","/// Light type (not yet implemented)"],["LightIter","/// Light iterator type."]]});

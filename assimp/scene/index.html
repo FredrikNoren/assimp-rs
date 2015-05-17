@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `scene` mod in crate `assimp`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, scene">
+
+    <title>assimp::scene - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>assimp</a></p><script>window.sidebarCurrent = {name: 'scene', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>assimp</a>::<wbr><a class='mod' href=''>scene</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-5669' href='../../src/assimp/scene/mod.rs.html#1-21'>[src]</a></span></h1>
+<div class='docblock'><p>The <code>scene</code> module contains definitions of imported scene data.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use self::animation::{<a class='struct' href='../../assimp/struct.Animation.html' title='assimp::Animation'>Animation</a>};</code></td></tr><tr><td><code>pub use self::camera::{<a class='struct' href='../../assimp/struct.Camera.html' title='assimp::Camera'>Camera</a>};</code></td></tr><tr><td><code>pub use self::face::{<a class='struct' href='../../assimp/struct.Face.html' title='assimp::Face'>Face</a>};</code></td></tr><tr><td><code>pub use self::light::{<a class='struct' href='../../assimp/struct.Light.html' title='assimp::Light'>Light</a>};</code></td></tr><tr><td><code>pub use self::material::{<a class='struct' href='../../assimp/struct.Material.html' title='assimp::Material'>Material</a>};</code></td></tr><tr><td><code>pub use self::mesh::{<a class='struct' href='../../assimp/struct.Mesh.html' title='assimp::Mesh'>Mesh</a>};</code></td></tr><tr><td><code>pub use self::node::{<a class='struct' href='../../assimp/struct.Node.html' title='assimp::Node'>Node</a>};</code></td></tr><tr><td><code>pub use self::<a class='mod'
+                                            href='./scene/index.html'>scene</a>::<a class='struct' href='../../assimp/struct.Scene.html' title='assimp::Scene'>Scene</a>;</code></td></tr><tr><td><code>pub use self::texture::{<a class='struct' href='../../assimp/struct.Texture.html' title='assimp::Texture'>Texture</a>};</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnimationIter.html'
+                               title='assimp::scene::AnimationIter'>AnimationIter</a></td>
+                        <td class='docblock short'><p>/// Animation iterator type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CameraIter.html'
+                               title='assimp::scene::CameraIter'>CameraIter</a></td>
+                        <td class='docblock short'><p>/// Camera iterator type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FaceIter.html'
+                               title='assimp::scene::FaceIter'>FaceIter</a></td>
+                        <td class='docblock short'><p>/// Face iterator type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LightIter.html'
+                               title='assimp::scene::LightIter'>LightIter</a></td>
+                        <td class='docblock short'><p>/// Light iterator type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MaterialIter.html'
+                               title='assimp::scene::MaterialIter'>MaterialIter</a></td>
+                        <td class='docblock short'><p>/// Material iterator type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MeshIter.html'
+                               title='assimp::scene::MeshIter'>MeshIter</a></td>
+                        <td class='docblock short'><p>/// Mesh iterator type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.NodeIter.html'
+                               title='assimp::scene::NodeIter'>NodeIter</a></td>
+                        <td class='docblock short'><p>/// Node iterator type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TextureIter.html'
+                               title='assimp::scene::TextureIter'>TextureIter</a></td>
+                        <td class='docblock short'><p>/// Texture iterator type.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "assimp";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Vector3D","/// Vector3D docs"],["Vector3DIter","/// Vector3DIter docs"]]});

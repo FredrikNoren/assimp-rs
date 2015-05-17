@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Point2` struct in crate `cgmath`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Point2">
+
+    <title>cgmath::Point2 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>cgmath</a></p><script>window.sidebarCurrent = {name: 'Point2', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>cgmath</a>::<wbr><a class='struct' href=''>Point2</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-21913' href='../src/cgmath/point.rs.html#36'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Point2&lt;S&gt; {
+    pub x: S,
+    pub y: S,
+}</pre><div class='docblock'><p>A point in 2-dimensional space.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.x'><a class='stability Unmarked' title='No stability level'></a><code>x</code></td><td></td></tr><tr><td id='structfield.y'><a class='stability Unmarked' title='No stability level'></a><code>y</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseNum.html' title='cgmath::BaseNum'>BaseNum</a>&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(x: S, y: S) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S&gt; <a class='trait' href='../cgmath/trait.FixedArray.html' title='cgmath::FixedArray'>FixedArray</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[S; 2]</a>&gt; for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.into_fixed' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.FixedArray.html#method.into_fixed' class='fnname'>into_fixed</a>(self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[S; 2]</a></code></h4>
+<h4 id='method.as_fixed' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.FixedArray.html#method.as_fixed' class='fnname'>as_fixed</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[S; 2]</a></code></h4>
+<h4 id='method.as_mut_fixed' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.FixedArray.html#method.as_mut_fixed' class='fnname'>as_mut_fixed</a>&lt;'a&gt;(&amp;'a mut self) -&gt; &amp;'a mut <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[S; 2]</a></code></h4>
+<h4 id='method.from_fixed' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.FixedArray.html#method.from_fixed' class='fnname'>from_fixed</a>(_v: <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[S; 2]</a>) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+<h4 id='method.from_fixed_ref' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.FixedArray.html#method.from_fixed_ref' class='fnname'>from_fixed_ref</a>&lt;'a&gt;(v: &amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[S; 2]</a>) -&gt; &amp;'a <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+<h4 id='method.from_fixed_mut' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.FixedArray.html#method.from_fixed_mut' class='fnname'>from_fixed_mut</a>&lt;'a&gt;(v: &amp;'a mut <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[S; 2]</a>) -&gt; &amp;'a mut <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseNum.html' title='cgmath::BaseNum'>BaseNum</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Index.html' title='core::ops::Index'>Index</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt; for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='assoc_type.Output' class='type'><a class='stability Unmarked' title='No stability level'></a><code>type Output = S</code></h4>
+<h4 id='method.index' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Index.html#method.index' class='fnname'>index</a>&lt;'a&gt;(&amp;'a self, i: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; &amp;'a S</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseNum.html' title='cgmath::BaseNum'>BaseNum</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html' title='core::ops::IndexMut'>IndexMut</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt; for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.index_mut' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html#method.index_mut' class='fnname'>index_mut</a>&lt;'a&gt;(&amp;'a mut self, i: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; &amp;'a mut S</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseNum.html' title='cgmath::BaseNum'>BaseNum</a>&gt; <a class='trait' href='../cgmath/trait.Array1.html' title='cgmath::Array1'>Array1</a>&lt;S&gt; for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.map' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Array1.html#method.map' class='fnname'>map</a>&lt;F&gt;(&amp;mut self, op: F) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt; <span class='where'>where F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html' title='core::ops::FnMut'>FnMut</a>(S) -&gt; S</span></code></h4>
+<h4 id='method.ptr' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Array1.html#method.ptr' class='fnname'>ptr</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a Element</code></h4>
+<h4 id='method.mut_ptr' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Array1.html#method.mut_ptr' class='fnname'>mut_ptr</a>&lt;'a&gt;(&amp;'a mut self) -&gt; &amp;'a mut Element</code></h4>
+<h4 id='method.swap_elems' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Array1.html#method.swap_elems' class='fnname'>swap_elems</a>(&amp;mut self, i: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, j: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>)</code></h4>
+<h4 id='method.replace_elem' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Array1.html#method.replace_elem' class='fnname'>replace_elem</a>(&amp;mut self, i: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, src: Element) -&gt; Element</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseNum.html' title='cgmath::BaseNum'>BaseNum</a>&gt; <a class='trait' href='../cgmath/trait.Point.html' title='cgmath::Point'>Point</a>&lt;S, <a class='struct' href='../cgmath/struct.Vector2.html' title='cgmath::Vector2'>Vector2</a>&lt;S&gt;&gt; for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.origin' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.origin' class='fnname'>origin</a>() -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+<h4 id='method.from_vec' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.from_vec' class='fnname'>from_vec</a>(v: &amp;<a class='struct' href='../cgmath/struct.Vector2.html' title='cgmath::Vector2'>Vector2</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+<h4 id='method.to_vec' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.to_vec' class='fnname'>to_vec</a>(&amp;self) -&gt; <a class='struct' href='../cgmath/struct.Vector2.html' title='cgmath::Vector2'>Vector2</a>&lt;S&gt;</code></h4>
+<h4 id='method.mul_s' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.mul_s' class='fnname'>mul_s</a>(&amp;self, s: S) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+<h4 id='method.div_s' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.div_s' class='fnname'>div_s</a>(&amp;self, s: S) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+<h4 id='method.rem_s' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.rem_s' class='fnname'>rem_s</a>(&amp;self, s: S) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+<h4 id='method.add_v' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.add_v' class='fnname'>add_v</a>(&amp;self, v: &amp;<a class='struct' href='../cgmath/struct.Vector2.html' title='cgmath::Vector2'>Vector2</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+<h4 id='method.sub_p' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.sub_p' class='fnname'>sub_p</a>(&amp;self, p: &amp;<a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Vector2.html' title='cgmath::Vector2'>Vector2</a>&lt;S&gt;</code></h4>
+<h4 id='method.mul_self_s' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.mul_self_s' class='fnname'>mul_self_s</a>(&amp;mut self, s: S)</code></h4>
+<h4 id='method.div_self_s' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.div_self_s' class='fnname'>div_self_s</a>(&amp;mut self, s: S)</code></h4>
+<h4 id='method.rem_self_s' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.rem_self_s' class='fnname'>rem_self_s</a>(&amp;mut self, s: S)</code></h4>
+<h4 id='method.add_self_v' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.add_self_v' class='fnname'>add_self_v</a>(&amp;mut self, v: &amp;<a class='struct' href='../cgmath/struct.Vector2.html' title='cgmath::Vector2'>Vector2</a>&lt;S&gt;)</code></h4>
+<h4 id='method.dot' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.dot' class='fnname'>dot</a>(&amp;self, v: &amp;<a class='struct' href='../cgmath/struct.Vector2.html' title='cgmath::Vector2'>Vector2</a>&lt;S&gt;) -&gt; S</code></h4>
+<h4 id='method.min' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.min' class='fnname'>min</a>(&amp;self, p: &amp;<a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+<h4 id='method.max' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Point.html#method.max' class='fnname'>max</a>(&amp;self, p: &amp;<a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='../cgmath/trait.ApproxEq.html' title='cgmath::ApproxEq'>ApproxEq</a>&lt;S&gt; for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.approx_eq_eps' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.ApproxEq.html#method.approx_eq_eps' class='fnname'>approx_eq_eps</a>(&amp;self, other: &amp;<a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;, epsilon: &amp;S) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.approx_epsilon' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.ApproxEq.html#method.approx_epsilon' class='fnname'>approx_epsilon</a>(_hack: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;Self&gt;) -&gt; T</code></h4>
+<h4 id='method.approx_eq' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.ApproxEq.html#method.approx_eq' class='fnname'>approx_eq</a>(&amp;self, other: &amp;Self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseNum.html' title='cgmath::BaseNum'>BaseNum</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../rustc_serialize/serialize/trait.Decodable.html' title='rustc_serialize::serialize::Decodable'>Decodable</a>&gt; <a class='trait' href='../rustc_serialize/serialize/trait.Decodable.html' title='rustc_serialize::serialize::Decodable'>Decodable</a> for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='../rustc_serialize/serialize/trait.Decodable.html' title='rustc_serialize::serialize::Decodable'>Decodable</a>, S: <a class='trait' href='../rustc_serialize/serialize/trait.Decodable.html' title='rustc_serialize::serialize::Decodable'>Decodable</a></span></code></h3><div class='impl-items'><h4 id='method.decode' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../rustc_serialize/serialize/trait.Decodable.html#method.decode' class='fnname'>decode</a>&lt;__D: <a class='trait' href='../rustc_serialize/serialize/trait.Decoder.html' title='rustc_serialize::serialize::Decoder'>Decoder</a>&gt;(__arg_0: &amp;mut __D) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;, __D&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a>&gt; <a class='trait' href='../rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a> for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='../rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a>, S: <a class='trait' href='../rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a></span></code></h3><div class='impl-items'><h4 id='method.encode' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../rustc_serialize/serialize/trait.Encodable.html#method.encode' class='fnname'>encode</a>&lt;__S: <a class='trait' href='../rustc_serialize/serialize/trait.Encoder.html' title='rustc_serialize::serialize::Encoder'>Encoder</a>&gt;(&amp;self, __arg_0: &amp;mut __S) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, __S&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a> for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>, S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a></span></code></h3><div class='impl-items'><h4 id='method.hash' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html#method.hash' class='fnname'>hash</a>&lt;__H: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hasher.html' title='core::hash::Hasher'>Hasher</a>&gt;(&amp;self, __arg_0: &amp;mut __H)</code></h4>
+<h4 id='method.hash_slice' class='method'><a class='stability Unstable' title='Unstable: module was recently redesigned'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html#method.hash_slice' class='fnname'>hash_slice</a>&lt;H&gt;(data: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[Self]</a>, state: &amp;mut H) <span class='where'>where H: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hasher.html' title='core::hash::Hasher'>Hasher</a></span></code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>, S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a></span></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;</code></h4>
+<h4 id='method.clone_from' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a>, S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a></span></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a>, S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a></span></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a>, S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a></span></code></h3><div class='impl-items'><h4 id='method.eq' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ne' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='struct' href='../cgmath/struct.Point2.html' title='cgmath::Point2'>Point2</a>&lt;S&gt;) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "cgmath";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

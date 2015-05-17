@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AiNode",""],["AiScene",""],["AiSceneFlags",""]],"constant":[["AI_SCENE_FLAGS_INCOMPLETE",""],["AI_SCENE_FLAGS_NON_VERBOSE_FORMAT",""],["AI_SCENE_FLAGS_TERRAIN",""],["AI_SCENE_FLAGS_VALIDATED",""],["AI_SCENE_FLAGS_VALIDATION_WARNING",""]]});

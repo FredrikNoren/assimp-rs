@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AiExportDataBlob",""],["AiExportFormatDesc",""]],"fn":[["aiCopyScene",""],["aiExportScene",""],["aiExportSceneEx",""],["aiExportSceneToBlob",""],["aiFreeScene",""],["aiGetExportFormatCount",""],["aiGetExportFormatDescription",""],["aiReleaseExportBlob",""]]});

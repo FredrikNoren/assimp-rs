@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Face","/// Face type (not yet implemented)"],["FaceIter","/// Face iterator type."]]});

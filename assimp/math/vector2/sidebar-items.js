@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Vector2D","/// Vector2D docs"]]});

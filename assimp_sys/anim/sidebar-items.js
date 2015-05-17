@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AiAnimation",""],["AiMeshAnim",""],["AiMeshKey",""],["AiNodeAnim",""],["AiQuatKey",""],["AiVectorKey",""]],"enum":[["AiAnimBehaviour",""]]});

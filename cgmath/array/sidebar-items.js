@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["Array1","An array containing elements of type `Element`"],["Array2","A column-major array"],["FixedArray","Homogeneous arrays of elements that can be converted to and from `[T, ..N]` arrays."]]});

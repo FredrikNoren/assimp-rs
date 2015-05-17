@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["Point","Specifies the numeric operations for point types."]],"struct":[["Point2","A point in 2-dimensional space."],["Point3","A point in 3-dimensional space."]]});

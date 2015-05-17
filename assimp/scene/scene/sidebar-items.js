@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Scene","/// The `Scene` type is the root container for all imported scene data."]]});

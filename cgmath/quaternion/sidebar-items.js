@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Quaternion","A quaternion in scalar/vector form."]],"trait":[["ToQuaternion","Represents types which can be expressed as a quaternion."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Mesh","/// Mesh type (incomplete)"],["MeshIter","/// Mesh iterator type."]]});

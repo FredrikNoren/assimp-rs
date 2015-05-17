@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AiString",""]],"constant":[["MAXLEN",""]]});

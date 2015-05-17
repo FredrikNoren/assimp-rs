@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Material","/// Material type (not yet implemented)"],["MaterialIter","/// Material iterator type."]]});

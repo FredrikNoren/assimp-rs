@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Node","/// The `Node` type represents a node in the imported scene hierarchy."],["NodeIter","/// Node iterator type."]]});

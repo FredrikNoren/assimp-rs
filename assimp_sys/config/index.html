@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `config` mod in crate `assimp_sys`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, config">
+
+    <title>assimp_sys::config - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>assimp_sys</a></p><script>window.sidebarCurrent = {name: 'config', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>assimp_sys</a>::<wbr><a class='mod' href=''>config</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-1436' href='../../src/assimp_sys/config.rs.html#1-112'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AiComponent.html'
+                               title='assimp_sys::config::AiComponent'>AiComponent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AiUVTransformFlags.html'
+                               title='assimp_sys::config::AiUVTransformFlags'>AiUVTransformFlags</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_ANIMATIONS.html'
+                               title='assimp_sys::config::AICOMPONENT_ANIMATIONS'>AICOMPONENT_ANIMATIONS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_BONE_WEIGHTS.html'
+                               title='assimp_sys::config::AICOMPONENT_BONE_WEIGHTS'>AICOMPONENT_BONE_WEIGHTS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_CAMERAS.html'
+                               title='assimp_sys::config::AICOMPONENT_CAMERAS'>AICOMPONENT_CAMERAS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_COLORS.html'
+                               title='assimp_sys::config::AICOMPONENT_COLORS'>AICOMPONENT_COLORS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_LIGHTS.html'
+                               title='assimp_sys::config::AICOMPONENT_LIGHTS'>AICOMPONENT_LIGHTS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_MATERIALS.html'
+                               title='assimp_sys::config::AICOMPONENT_MATERIALS'>AICOMPONENT_MATERIALS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_MESHES.html'
+                               title='assimp_sys::config::AICOMPONENT_MESHES'>AICOMPONENT_MESHES</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_NORMALS.html'
+                               title='assimp_sys::config::AICOMPONENT_NORMALS'>AICOMPONENT_NORMALS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_TANGENTS_AND_BITANGENTS.html'
+                               title='assimp_sys::config::AICOMPONENT_TANGENTS_AND_BITANGENTS'>AICOMPONENT_TANGENTS_AND_BITANGENTS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_TEXCOORDS.html'
+                               title='assimp_sys::config::AICOMPONENT_TEXCOORDS'>AICOMPONENT_TEXCOORDS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AICOMPONENT_TEXTURES.html'
+                               title='assimp_sys::config::AICOMPONENT_TEXTURES'>AICOMPONENT_TEXTURES</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AI_DEBONE_THRESHOLD.html'
+                               title='assimp_sys::config::AI_DEBONE_THRESHOLD'>AI_DEBONE_THRESHOLD</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AI_LMW_MAX_WEIGHTS.html'
+                               title='assimp_sys::config::AI_LMW_MAX_WEIGHTS'>AI_LMW_MAX_WEIGHTS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AI_SBBC_DEFAULT_MAX_BONES.html'
+                               title='assimp_sys::config::AI_SBBC_DEFAULT_MAX_BONES'>AI_SBBC_DEFAULT_MAX_BONES</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AI_SLM_DEFAULT_MAX_TRIANGLES.html'
+                               title='assimp_sys::config::AI_SLM_DEFAULT_MAX_TRIANGLES'>AI_SLM_DEFAULT_MAX_TRIANGLES</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AI_SLM_DEFAULT_MAX_VERTICES.html'
+                               title='assimp_sys::config::AI_SLM_DEFAULT_MAX_VERTICES'>AI_SLM_DEFAULT_MAX_VERTICES</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AI_UVTRAFO_ALL.html'
+                               title='assimp_sys::config::AI_UVTRAFO_ALL'>AI_UVTRAFO_ALL</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AI_UVTRAFO_ROTATION.html'
+                               title='assimp_sys::config::AI_UVTRAFO_ROTATION'>AI_UVTRAFO_ROTATION</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AI_UVTRAFO_SCALING.html'
+                               title='assimp_sys::config::AI_UVTRAFO_SCALING'>AI_UVTRAFO_SCALING</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AI_UVTRAFO_TRANSLATION.html'
+                               title='assimp_sys::config::AI_UVTRAFO_TRANSLATION'>AI_UVTRAFO_TRANSLATION</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.FAVOUR_SPEED.html'
+                               title='assimp_sys::config::FAVOUR_SPEED'>FAVOUR_SPEED</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.GLOB_MEASURE_TIME.html'
+                               title='assimp_sys::config::GLOB_MEASURE_TIME'>GLOB_MEASURE_TIME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.GLOB_MULTITHREADING.html'
+                               title='assimp_sys::config::GLOB_MULTITHREADING'>GLOB_MULTITHREADING</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_AC_EVAL_SUBDIVISION.html'
+                               title='assimp_sys::config::IMPORT_AC_EVAL_SUBDIVISION'>IMPORT_AC_EVAL_SUBDIVISION</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_AC_SEPARATE_BFCULL.html'
+                               title='assimp_sys::config::IMPORT_AC_SEPARATE_BFCULL'>IMPORT_AC_SEPARATE_BFCULL</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_ASE_RECONSTRUCT_NORMALS.html'
+                               title='assimp_sys::config::IMPORT_ASE_RECONSTRUCT_NORMALS'>IMPORT_ASE_RECONSTRUCT_NORMALS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_COLLADA_IGNORE_UP_DIRECTION.html'
+                               title='assimp_sys::config::IMPORT_COLLADA_IGNORE_UP_DIRECTION'>IMPORT_COLLADA_IGNORE_UP_DIRECTION</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_FBX_OPTIMIZE_EMPTY_ANIMATION_CURVES.html'
+                               title='assimp_sys::config::IMPORT_FBX_OPTIMIZE_EMPTY_ANIMATION_CURVES'>IMPORT_FBX_OPTIMIZE_EMPTY_ANIMATION_CURVES</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_FBX_PRESERVE_PIVOTS.html'
+                               title='assimp_sys::config::IMPORT_FBX_PRESERVE_PIVOTS'>IMPORT_FBX_PRESERVE_PIVOTS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_FBX_READ_ALL_GEOMETRY_LAYERS.html'
+                               title='assimp_sys::config::IMPORT_FBX_READ_ALL_GEOMETRY_LAYERS'>IMPORT_FBX_READ_ALL_GEOMETRY_LAYERS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_FBX_READ_ALL_MATERIALS.html'
+                               title='assimp_sys::config::IMPORT_FBX_READ_ALL_MATERIALS'>IMPORT_FBX_READ_ALL_MATERIALS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_FBX_READ_ANIMATIONS.html'
+                               title='assimp_sys::config::IMPORT_FBX_READ_ANIMATIONS'>IMPORT_FBX_READ_ANIMATIONS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_FBX_READ_CAMERAS.html'
+                               title='assimp_sys::config::IMPORT_FBX_READ_CAMERAS'>IMPORT_FBX_READ_CAMERAS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_FBX_READ_LIGHTS.html'
+                               title='assimp_sys::config::IMPORT_FBX_READ_LIGHTS'>IMPORT_FBX_READ_LIGHTS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_FBX_READ_MATERIALS.html'
+                               title='assimp_sys::config::IMPORT_FBX_READ_MATERIALS'>IMPORT_FBX_READ_MATERIALS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_FBX_STRICT_MODE.html'
+                               title='assimp_sys::config::IMPORT_FBX_STRICT_MODE'>IMPORT_FBX_STRICT_MODE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_GLOBAL_KEYFRAME.html'
+                               title='assimp_sys::config::IMPORT_GLOBAL_KEYFRAME'>IMPORT_GLOBAL_KEYFRAME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_IFC_CUSTOM_TRIANGULATION.html'
+                               title='assimp_sys::config::IMPORT_IFC_CUSTOM_TRIANGULATION'>IMPORT_IFC_CUSTOM_TRIANGULATION</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_IFC_SKIP_CURVE_REPRESENTATIONS.html'
+                               title='assimp_sys::config::IMPORT_IFC_SKIP_CURVE_REPRESENTATIONS'>IMPORT_IFC_SKIP_CURVE_REPRESENTATIONS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_IFC_SKIP_SPACE_REPRESENTATIONS.html'
+                               title='assimp_sys::config::IMPORT_IFC_SKIP_SPACE_REPRESENTATIONS'>IMPORT_IFC_SKIP_SPACE_REPRESENTATIONS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_IRR_ANIM_FPS.html'
+                               title='assimp_sys::config::IMPORT_IRR_ANIM_FPS'>IMPORT_IRR_ANIM_FPS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_LWO_ONE_LAYER_ONLY.html'
+                               title='assimp_sys::config::IMPORT_LWO_ONE_LAYER_ONLY'>IMPORT_LWO_ONE_LAYER_ONLY</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_LWS_ANIM_END.html'
+                               title='assimp_sys::config::IMPORT_LWS_ANIM_END'>IMPORT_LWS_ANIM_END</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_LWS_ANIM_START.html'
+                               title='assimp_sys::config::IMPORT_LWS_ANIM_START'>IMPORT_LWS_ANIM_START</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_MD2_KEYFRAME.html'
+                               title='assimp_sys::config::IMPORT_MD2_KEYFRAME'>IMPORT_MD2_KEYFRAME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_MD3_HANDLE_MULTIPART.html'
+                               title='assimp_sys::config::IMPORT_MD3_HANDLE_MULTIPART'>IMPORT_MD3_HANDLE_MULTIPART</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_MD3_KEYFRAME.html'
+                               title='assimp_sys::config::IMPORT_MD3_KEYFRAME'>IMPORT_MD3_KEYFRAME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_MD3_SHADER_SRC.html'
+                               title='assimp_sys::config::IMPORT_MD3_SHADER_SRC'>IMPORT_MD3_SHADER_SRC</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_MD3_SKIN_NAME.html'
+                               title='assimp_sys::config::IMPORT_MD3_SKIN_NAME'>IMPORT_MD3_SKIN_NAME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_MD5_NO_ANIM_AUTOLOAD.html'
+                               title='assimp_sys::config::IMPORT_MD5_NO_ANIM_AUTOLOAD'>IMPORT_MD5_NO_ANIM_AUTOLOAD</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_MDC_KEYFRAME.html'
+                               title='assimp_sys::config::IMPORT_MDC_KEYFRAME'>IMPORT_MDC_KEYFRAME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_MDL_COLORMAP.html'
+                               title='assimp_sys::config::IMPORT_MDL_COLORMAP'>IMPORT_MDL_COLORMAP</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_MDL_KEYFRAME.html'
+                               title='assimp_sys::config::IMPORT_MDL_KEYFRAME'>IMPORT_MDL_KEYFRAME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_NO_SKELETON_MESHES.html'
+                               title='assimp_sys::config::IMPORT_NO_SKELETON_MESHES'>IMPORT_NO_SKELETON_MESHES</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_OGRE_MATERIAL_FILE.html'
+                               title='assimp_sys::config::IMPORT_OGRE_MATERIAL_FILE'>IMPORT_OGRE_MATERIAL_FILE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_OGRE_TEXTURETYPE_FROM_FILENAME.html'
+                               title='assimp_sys::config::IMPORT_OGRE_TEXTURETYPE_FROM_FILENAME'>IMPORT_OGRE_TEXTURETYPE_FROM_FILENAME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_SMD_KEYFRAME.html'
+                               title='assimp_sys::config::IMPORT_SMD_KEYFRAME'>IMPORT_SMD_KEYFRAME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_TER_MAKE_UVS.html'
+                               title='assimp_sys::config::IMPORT_TER_MAKE_UVS'>IMPORT_TER_MAKE_UVS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.IMPORT_UNREAL_KEYFRAME.html'
+                               title='assimp_sys::config::IMPORT_UNREAL_KEYFRAME'>IMPORT_UNREAL_KEYFRAME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_CT_MAX_SMOOTHING_ANGLE.html'
+                               title='assimp_sys::config::PP_CT_MAX_SMOOTHING_ANGLE'>PP_CT_MAX_SMOOTHING_ANGLE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_CT_TEXTURE_CHANNEL_INDEX.html'
+                               title='assimp_sys::config::PP_CT_TEXTURE_CHANNEL_INDEX'>PP_CT_TEXTURE_CHANNEL_INDEX</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_DB_ALL_OR_NONE.html'
+                               title='assimp_sys::config::PP_DB_ALL_OR_NONE'>PP_DB_ALL_OR_NONE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_DB_THRESHOLD.html'
+                               title='assimp_sys::config::PP_DB_THRESHOLD'>PP_DB_THRESHOLD</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_FD_REMOVE.html'
+                               title='assimp_sys::config::PP_FD_REMOVE'>PP_FD_REMOVE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_FID_ANIM_ACCURACY.html'
+                               title='assimp_sys::config::PP_FID_ANIM_ACCURACY'>PP_FID_ANIM_ACCURACY</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_GSN_MAX_SMOOTHING_ANGLE.html'
+                               title='assimp_sys::config::PP_GSN_MAX_SMOOTHING_ANGLE'>PP_GSN_MAX_SMOOTHING_ANGLE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_ICL_DEFAULT_PTCACHE_SIZE.html'
+                               title='assimp_sys::config::PP_ICL_DEFAULT_PTCACHE_SIZE'>PP_ICL_DEFAULT_PTCACHE_SIZE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_ICL_PTCACHE_SIZE.html'
+                               title='assimp_sys::config::PP_ICL_PTCACHE_SIZE'>PP_ICL_PTCACHE_SIZE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_LBW_MAX_WEIGHTS.html'
+                               title='assimp_sys::config::PP_LBW_MAX_WEIGHTS'>PP_LBW_MAX_WEIGHTS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_OG_EXCLUDE_LIST.html'
+                               title='assimp_sys::config::PP_OG_EXCLUDE_LIST'>PP_OG_EXCLUDE_LIST</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_PTV_ADD_ROOT_TRANSFORMATION.html'
+                               title='assimp_sys::config::PP_PTV_ADD_ROOT_TRANSFORMATION'>PP_PTV_ADD_ROOT_TRANSFORMATION</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_PTV_KEEP_HIERARCHY.html'
+                               title='assimp_sys::config::PP_PTV_KEEP_HIERARCHY'>PP_PTV_KEEP_HIERARCHY</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_PTV_NORMALIZE.html'
+                               title='assimp_sys::config::PP_PTV_NORMALIZE'>PP_PTV_NORMALIZE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_PTV_ROOT_TRANSFORMATION.html'
+                               title='assimp_sys::config::PP_PTV_ROOT_TRANSFORMATION'>PP_PTV_ROOT_TRANSFORMATION</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_RRM_EXCLUDE_LIST.html'
+                               title='assimp_sys::config::PP_RRM_EXCLUDE_LIST'>PP_RRM_EXCLUDE_LIST</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_RVC_FLAGS.html'
+                               title='assimp_sys::config::PP_RVC_FLAGS'>PP_RVC_FLAGS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_SBBC_MAX_BONES.html'
+                               title='assimp_sys::config::PP_SBBC_MAX_BONES'>PP_SBBC_MAX_BONES</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_SBP_REMOVE.html'
+                               title='assimp_sys::config::PP_SBP_REMOVE'>PP_SBP_REMOVE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_SLM_TRIANGLE_LIMIT.html'
+                               title='assimp_sys::config::PP_SLM_TRIANGLE_LIMIT'>PP_SLM_TRIANGLE_LIMIT</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_SLM_VERTEX_LIMIT.html'
+                               title='assimp_sys::config::PP_SLM_VERTEX_LIMIT'>PP_SLM_VERTEX_LIMIT</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PP_TUV_EVALUATE.html'
+                               title='assimp_sys::config::PP_TUV_EVALUATE'>PP_TUV_EVALUATE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.UNREAL_HANDLE_FLAGS.html'
+                               title='assimp_sys::config::UNREAL_HANDLE_FLAGS'>UNREAL_HANDLE_FLAGS</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "assimp_sys";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

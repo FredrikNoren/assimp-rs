@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Importer` struct in crate `assimp`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Importer">
+
+    <title>assimp::import::Importer - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>assimp</a>::<wbr><a href='index.html'>import</a></p><script>window.sidebarCurrent = {name: 'Importer', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>assimp</a>::<wbr><a href='index.html'>import</a>::<wbr><a class='struct' href=''>Importer</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-1362' href='../../src/assimp/import/mod.rs.html#33-36'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Importer {
+    // some fields omitted
+}</pre><div class='docblock'><p>The <code>Importer</code> type.</p>
+
+<p>See <a href="index.html">module-level documentation</a> for examples.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../assimp/import/struct.Importer.html' title='assimp::import::Importer'>Importer</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../assimp/import/struct.Importer.html' title='assimp::import::Importer'>Importer</a></code></h4>
+<div class='docblock'><p>Create a new Importer.</p>
+</div><h4 id='method.read_file' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.read_file' class='fnname'>read_file</a>&lt;'a&gt;(&amp;self, file: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../assimp/struct.Scene.html' title='assimp::Scene'>Scene</a>&lt;'a&gt;, &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
+<div class='docblock'><p>Load a scene from the specified file.</p>
+
+<p>If the call succeeds, return value is <code>Ok</code>, containing the loaded <code>Scene</code> structure.
+If the call fails, return value is <code>Err</code>, containing the error string returned from
+the Assimp library.</p>
+</div><h4 id='method.apply_postprocessing' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.apply_postprocessing' class='fnname'>apply_postprocessing</a>&lt;'a&gt;(&amp;'a self, scene: <a class='struct' href='../../assimp/struct.Scene.html' title='assimp::Scene'>Scene</a>&lt;'a&gt;) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../assimp/struct.Scene.html' title='assimp::Scene'>Scene</a>, &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
+<div class='docblock'><p>Apply post-processing to an already-imported scene.</p>
+
+<p>This performs all enabled post-processing steps on an already imported scene. The main
+use case for this is to inspect the scene returned by <code>read_file</code> before choosing which
+additional post-process steps to apply.</p>
+
+<p>Due to how the Assimp C API works, this isn&#39;t as useful as it should be. Currently it isn&#39;t
+possible to configure properties of post-processing steps after the initial import.</p>
+
+<h1 id="return-value" class='section-header'><a
+                           href="#return-value">Return value</a></h1>
+<p>The new scene, with new post-processing steps applied. Note that it is possible for this
+method to fail, in which case the return value is <code>Err</code>.</p>
+</div><h4 id='method.measure_time' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.measure_time' class='fnname'>measure_time</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Enables time measurements.</p>
+
+<p>If enabled, measures the time needed for each part of the loading process (i.e. IO time,
+importing, postprocessing, ..) and dumps these timings to the output log.</p>
+</div><h4 id='method.favour_speed' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.favour_speed' class='fnname'>favour_speed</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>A hint to Assimp to favour speed against import quality.</p>
+
+<p>Enabling this option may result in faster loading, but it needn&#39;t. It represents just a hint
+to loaders and post-processing steps to use faster code paths, if possible.</p>
+</div><h4 id='method.calc_tangent_space' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.calc_tangent_space' class='fnname'>calc_tangent_space</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.CalcTangentSpace.html' title='assimp::import::structs::CalcTangentSpace'>CalcTangentSpace</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>Calculates the tangents and bitangents for the imported meshes.</p>
+
+<p>Does nothing if a mesh does not have normals. You might want this post processing step to be
+executed if you plan to use tangent space calculations such as normal mapping applied to the
+meshes. The <code>max_smoothing_angle</code> property allows you to specify a maximum smoothing angle
+for the algorithm. However, usually you&#39;ll want to leave it at the default value.</p>
+</div><h4 id='method.join_identical_vertices' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.join_identical_vertices' class='fnname'>join_identical_vertices</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Identifies and joins identical vertex data sets within all imported meshes.</p>
+
+<p>After this step is run, each mesh contains unique vertices, so a vertex may be used by
+multiple faces. You usually want to use this post processing step. If your application deals
+with indexed geometry, this step is compulsory or you&#39;ll just waste rendering time.
+If this flag is not specified</b>, no vertices are referenced by more than one face and
+no index buffer is required for rendering.</p>
+</div><h4 id='method.make_left_handed' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.make_left_handed' class='fnname'>make_left_handed</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Converts all the imported data to a left-handed coordinate space.</p>
+
+<p>By default the data is returned in a right-handed coordinate space (which OpenGL prefers).
+In this space, +X points to the right, +Z points towards the viewer, and +Y points upwards.
+In the DirectX coordinate space +X points to the right, +Y points upwards, and +Z points
+away from the viewer.</p>
+
+<p>You&#39;ll probably want to consider this flag if you use Direct3D for rendering.</p>
+</div><h4 id='method.triangulate' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.triangulate' class='fnname'>triangulate</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Triangulates all faces of all meshes.</p>
+
+<p>By default the imported mesh data might contain faces with more than 3 indices. For
+rendering you&#39;ll usually want all faces to be triangles. This post processing step splits up
+faces with more than 3 indices into triangles. Line and point primitives are <em>not</em> modified!
+If you want &#39;triangles only&#39; with no other kinds of primitives, try the following solution:</p>
+
+<ul>
+<li>Enable both <code>triangulate</code> and <code>sort_by_primitive_type</code></li>
+<li>Ignore all point and line meshes when you process assimp&#39;s output</li>
+</ul>
+</div><h4 id='method.remove_component' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.remove_component' class='fnname'>remove_component</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.RemoveComponent.html' title='assimp::import::structs::RemoveComponent'>RemoveComponent</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>Removes some parts of the data structure (animations, materials, light sources, cameras,
+textures, vertex components).</p>
+
+<p>The components to be removed are specified in the <code>flags</code> property. This is quite useful
+if you don&#39;t need all parts of the output structure. Vertex colors are rarely used today for
+example... Calling this step to remove unneeded data from the pipeline as early as possible
+results in increased performance and a more optimized output data structure.</p>
+
+<p>This step is also useful if you want to force Assimp to recompute normals or tangents.
+The corresponding steps don&#39;t recompute them if they&#39;re already there (loaded from the
+source asset). By using this step you can make sure they are NOT there.</p>
+
+<p>This flag is a poor one, mainly because its purpose is usually misunderstood. Consider the
+following case: a 3D model has been exported from a CAD app, and it has per-face vertex
+colors. Vertex positions can&#39;t be shared, thus the <code>join_identical_vertices</code> step fails to
+optimize the data because of these nasty little vertex colors. Most apps don&#39;t even process
+them, so it&#39;s all for nothing. By using this step, unneeded components are excluded as early
+as possible, thus opening more room for internal optimizations.</p>
+</div><h4 id='method.generate_normals' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.generate_normals' class='fnname'>generate_normals</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.GenerateNormals.html' title='assimp::import::structs::GenerateNormals'>GenerateNormals</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>Generates normals for imported meshes.</p>
+
+<p>This is ignored if normals are already there at the time this flag is evaluated. Model
+importers try to load them from the source file, so they&#39;re usually already there.</p>
+
+<p>The <code>smooth</code> property specifies how normals are calculated. When set to false, normals are
+calculated per face, and shared between all points of a single face, so a single point can
+have multiple normals, which forces the library to duplicate vertices in some cases.</p>
+
+<p>When set to true, normals are calculated per vertex. The <code>max_smoothing_angle</code> property
+allows you to specify an angle maximum for the normal smoothing algorithm. Normals exceeding
+this limit are not smoothed, resulting in a hard seam between two faces. Using a decent
+angle here (e.g. 80 degrees) results in very good visual appearance.</p>
+</div><h4 id='method.split_large_meshes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.split_large_meshes' class='fnname'>split_large_meshes</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.SplitLargeMeshes.html' title='assimp::import::structs::SplitLargeMeshes'>SplitLargeMeshes</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>Splits large meshes into smaller sub-meshes.</p>
+
+<p>This is quite useful for real-time rendering, where the number of triangles which can be
+maximally processed in a single draw-call is limited by the video driver/hardware. The
+maximum vertex buffer is usually limited too. Both requirements can be met with this step:
+you may specify both a triangle and vertex limit for a single mesh.</p>
+
+<p>The split limits can (and should!) be set through the <code>vertex_limit</code> and <code>triangle_limit</code>
+properties.</p>
+
+<p>Note that splitting is generally a time-consuming task, but only if there&#39;s something to
+split. The use of this step is recommended for most users.</p>
+</div><h4 id='method.pre_transform_vertices' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.pre_transform_vertices' class='fnname'>pre_transform_vertices</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.PreTransformVertices.html' title='assimp::import::structs::PreTransformVertices'>PreTransformVertices</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>Removes the node graph and pre-transforms all vertices with the local transformation
+matrices of their nodes.</p>
+
+<p>The output scene still contains nodes, however there is only a root node with children, each
+one referencing only one mesh, and each mesh referencing one material. For rendering, you
+can simply render all meshes in order - you don&#39;t need to pay attention to local
+transformations and the node hierarchy. Animations are removed during this step.</p>
+
+<p>This step is intended for applications without a scenegraph. The step CAN cause some
+problems: if e.g. a mesh of the asset contains normals and another, using the same material
+index, does not, they will be brought together, but the first meshes&#39;s part of the normal
+list is zeroed. However, these artifacts are rare.</p>
+</div><h4 id='method.limit_bone_weights' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.limit_bone_weights' class='fnname'>limit_bone_weights</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.LimitBoneWeights.html' title='assimp::import::structs::LimitBoneWeights'>LimitBoneWeights</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>Limits the number of bones simultaneously affecting a single vertex to a maximum value.</p>
+
+<p>If any vertex is affected by more than the maximum number of bones, the least important
+vertex weights are removed and the remaining vertex weights are renormalized so that the
+weights still sum up to 1. The default bone weight limit is 4, but you can use the
+<code>max_weights</code> property to supply your own limit to the post processing step.</p>
+
+<p>If you intend to perform the skinning in hardware, this post processing step might be of
+interest to you.</p>
+</div><h4 id='method.validate_data_structure' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.validate_data_structure' class='fnname'>validate_data_structure</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Validates the imported scene data structure.</p>
+
+<p>This makes sure that all indices are valid, all animations and bones are linked correctly,
+all material references are correct .. etc.</p>
+
+<p>It is recommended that you capture Assimp&#39;s log output if you use this flag, so you can
+easily find out what&#39;s wrong if a file fails the validation. The validator is quite strict
+and will find <em>all</em> inconsistencies in the data structure... It is recommended that plugin
+developers use it to debug their loaders. There are two types of validation failures:</p>
+
+<ul>
+<li>Error: Error: There&#39;s something wrong with the imported data. Further postprocessing is
+not possible and the data is not usable at all. The import fails.
+#Importer::GetErrorString() or #aiGetErrorString() carry the error message around.</li>
+<li>Warning: There are some minor issues (e.g. 1000000 animation keyframes with the same
+time), but further postprocessing and use of the data structure is still safe. Warning
+details are written to the log file, <tt>#AI_SCENE_FLAGS_VALIDATION_WARNING</tt> is set
+in #aiScene::mFlags</li></li>
+</ul>
+
+<p>This post-processing step is not time-consuming. Its use is not compulsory, but recommended.</p>
+</div><h4 id='method.improve_cache_locality' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.improve_cache_locality' class='fnname'>improve_cache_locality</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.ImproveCacheLocality.html' title='assimp::import::structs::ImproveCacheLocality'>ImproveCacheLocality</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>Reorders triangles for better vertex cache locality.</p>
+
+<p>The step tries to improve the ACMR (average post-transform vertex cache miss ratio) for all
+meshes. The implementation runs in O(n) and is roughly based on the &#39;tipsify&#39; algorithm (see
+<a href="http://www.cs.princeton.edu/gfx/pubs/Sander_2007_%3ETR/tipsy.pdf">this paper</a>).</p>
+
+<p>If you intend to render huge models in hardware, this step might be of interest to you.
+The <code>cache_size</code> property can be used to fine-tune the cache optimization.</p>
+</div><h4 id='method.remove_redudant_materials' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.remove_redudant_materials' class='fnname'>remove_redudant_materials</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.RemoveRedundantMaterials.html' title='assimp::import::structs::RemoveRedundantMaterials'>RemoveRedundantMaterials</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>Searches for redundant/unreferenced materials and removes them.</p>
+
+<p>This is especially useful in combination with the <code>pre_transform_vertices</code> and
+<code>optimize_meshes</code> steps. Both join small meshes with equal characteristics, but they can&#39;t
+do  their work if two meshes have different materials. Because several material settings are
+lost during Assimp&#39;s import filters, (and because many exporters don&#39;t check for redundant
+materials), huge models often have materials which are are defined several times with
+exactly the same settings.</p>
+
+<p>Several material settings not contributing to the final appearance of a surface are ignored
+in all comparisons (e.g. the material name). So, if you&#39;re passing additional information
+through the content pipeline (probably using <em>magic</em> material names), don&#39;t specify this
+flag. Alternatively take a look at the  exclude_list` property.</p>
+</div><h4 id='method.fix_infacing_normals' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fix_infacing_normals' class='fnname'>fix_infacing_normals</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>This step tries to determine which meshes have normal vectors that are facing inwards and
+inverts them.</p>
+
+<p>The algorithm is simple but effective:
+the bounding box of all vertices + their normals is compared against the volume of the
+bounding box of all vertices without their normals. This works well for most objects,
+problems might occur with planar surfaces. However, the step tries to filter such cases.
+The step inverts all in-facing normals. Generally it is recommended to enable this step,
+although the result is not always correct.</p>
+</div><h4 id='method.sort_by_primitive_type' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.sort_by_primitive_type' class='fnname'>sort_by_primitive_type</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.SortByPrimitiveType.html' title='assimp::import::structs::SortByPrimitiveType'>SortByPrimitiveType</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>This step splits meshes with more than one primitive type in homogeneous sub-meshes.</p>
+
+<p>The step is executed after the triangulation step. After the step returns, just one bit is
+set in aiMesh::mPrimitiveTypes. This is especially useful for real-time rendering where
+point and line primitives are often ignored or rendered separately.</p>
+
+<p>You can use the <code>types</code> property to specify which primitive types you need. This can be
+used to easily exclude lines and points, which are rarely used, from the import.</p>
+
+<h1 id="panics" class='section-header'><a
+                           href="#panics">Panics</a></h1>
+<p>Specifying all possible primitive types for removal is illegal and causes a panic.</p>
+</div><h4 id='method.find_degenerates' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.find_degenerates' class='fnname'>find_degenerates</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.FindDegenerates.html' title='assimp::import::structs::FindDegenerates'>FindDegenerates</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>This step searches all meshes for degenerate primitives and converts them to proper lines
+or points.</p>
+
+<p>A face is &#39;degenerate&#39; if one or more of its points are identical. To have the degenerate
+stuff not only detected and collapsed but removed, try one of the following procedures:</p>
+
+<ol>
+<li>If you support lines and points for rendering but don&#39;t want the degenerates:
+
+<ul>
+<li>Enable the <code>find_degenerates</code> step.</li>
+<li>Set the <code>remove</code> property to true. This will cause the step to remove degenerate
+triangles from the import as soon as they&#39;re detected. They won&#39;t pass any further
+pipeline steps.</li>
+</ul></li>
+<li>If you don&#39;t support lines and points at all:
+
+<ul>
+<li>Enable the <code>find_degenerates</code> step.</li>
+<li>Enable the <code>sort_by_primitive_type</code> step. This moves line and point primitives to
+separate meshes.</li>
+<li>Set the <code>components</code> property to aiPrimitiveType_POINTS | aiPrimitiveType_LINES
+to cause <code>sort_by_primitive_type</code> to reject point and line meshes from the scene.</li>
+</ul></li>
+</ol>
+
+<p>Degenerate polygons are not necessarily evil and that&#39;s why they&#39;re not removed by default.
+There are several file formats which don&#39;t support lines or points, and some exporters
+bypass the format specification and write them as degenerate triangles instead.</p>
+</div><h4 id='method.find_invalid_data' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.find_invalid_data' class='fnname'>find_invalid_data</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.FindInvalidData.html' title='assimp::import::structs::FindInvalidData'>FindInvalidData</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>This step searches all meshes for invalid data, such as zeroed normal vectors or invalid UV
+coords and removes/fixes them. This is intended to get rid of some common exporter errors.</p>
+
+<p>This is especially useful for normals. If they are invalid, and the step recognizes this,
+they will be removed and can later be recomputed, i.e. by the <code>gen_normals</code> step.</p>
+
+<p>The step will also remove meshes that are infinitely small and reduce animation tracks
+consisting of hundreds if redundant keys to a single key.
+The <code>accuracy</code> property decides the accuracy of the check for duplicate animation tracks.</p>
+</div><h4 id='method.gen_uv_coords' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.gen_uv_coords' class='fnname'>gen_uv_coords</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>This step converts non-UV mappings (such as spherical or cylindrical mapping) to proper
+texture coordinate channels.</p>
+
+<p>Most applications will support UV mapping only, so you will probably want to specify this
+step in every case. Note that Assimp is not always able to match the original mapping
+implementation of the 3D app which produced a model perfectly. It&#39;s always better to let the
+modelling app compute the UV channels - 3ds max, Maya, Blender, LightWave, and Modo do this
+for example.</p>
+
+<p>If this step is not requested, you&#39;ll need to process the <code>AI_MATKEY_MAPPING</code> material
+property in order to display all assets properly.</p>
+</div><h4 id='method.transform_uv_coords' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.transform_uv_coords' class='fnname'>transform_uv_coords</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.TransformUVCoords.html' title='assimp::import::structs::TransformUVCoords'>TransformUVCoords</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>This step applies per-texture UV transformations and bakes them into stand-alone vtexture
+coordinate channels.</p>
+
+<p>UV transformations are specified per-texture - see the <code>AI_MATKEY_UVTRANSFORM</code> material key
+for more information. This step processes all textures with transformed input UV coordinates
+and generates a new (pre-transformed) UV channel which replaces the old channel. Most
+applications won&#39;t support UV transformations, so you will probably want to specify
+this step.</p>
+
+<p>UV transformations are usually implemented in real-time apps by transforming texture
+coordinates at vertex shader stage with a 3x3 (homogenous) transformation matrix.</p>
+</div><h4 id='method.find_instances' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.find_instances' class='fnname'>find_instances</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>This step searches for duplicate meshes and replaces them with references to the first mesh.</p>
+
+<p>This step takes a while, so don&#39;t use it if speed is a concern. Its main purpose is to
+workaround the fact that many export file formats don&#39;t support instanced meshes, so
+exporters need to duplicate meshes. This step removes the duplicates again. Please note that
+Assimp does not currently support per-node material assignment to meshes, which means that
+identical meshes with different materials are currently <em>not</em> joined, although this is
+planned for future versions.</p>
+</div><h4 id='method.optimize_meshes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.optimize_meshes' class='fnname'>optimize_meshes</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>A postprocessing step to reduce the number of meshes.</p>
+
+<p>This will, in fact, reduce the number of draw calls.</p>
+
+<p>This is a very effective optimization and is recommended to be used together with
+<code>optimize_graph</code>, if possible. The flag is fully compatible with both <code>split_large_meshes</code>
+and <code>sort_by_primitive_type</code>.</p>
+</div><h4 id='method.optimize_graph' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.optimize_graph' class='fnname'>optimize_graph</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.OptimizeGraph.html' title='assimp::import::structs::OptimizeGraph'>OptimizeGraph</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>A postprocessing step to optimize the scene hierarchy.</p>
+
+<p>Nodes without animations, bones, lights or cameras assigned are collapsed and joined.</p>
+
+<p>Node names can be lost during this step. If you use special &#39;tag nodes&#39; to pass additional
+information through your content pipeline, use the <code>exclude_list</code> property to specify a
+list of node names you want to be kept. Nodes matching one of the names in this list won&#39;t
+be touched or modified.</p>
+
+<p>Use this flag with caution. Most simple files will be collapsed to a single node, so
+complex hierarchies are usually completely lost. This is not useful for editor environments,
+but probably a very effective optimization if you just want to get the model data, convert
+it to your own format, and render it as fast as possible.</p>
+
+<p>This flag is designed to be used with <code>optimize_meshes</code> for best results.</p>
+
+<p>&#39;Crappy&#39; scenes with thousands of extremely small meshes packed in deeply nested nodes exist
+for almost all file formats. <code>optimize_meshes</code> in combination with <code>optimize_graph</code>
+usually fixes them all and makes them renderable.</p>
+</div><h4 id='method.flip_uvs' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.flip_uvs' class='fnname'>flip_uvs</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>This step flips all UV coordinates along the y-axis and adjusts material settings and
+bitangents accordingly.</p>
+
+<p><em>Output UV coordinate system:</em></p>
+
+<pre><code class="language-text">0y|0y ---------- 1x|0y
+|                 |
+|                 |
+|                 |
+0x|1y ---------- 1x|1y
+</code></pre>
+
+<p>You&#39;ll probably want to consider this flag if you use Direct3D for rendering.</p>
+</div><h4 id='method.flip_winding_order' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.flip_winding_order' class='fnname'>flip_winding_order</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>This step adjusts the output face winding order to be CW.</p>
+
+<p>The default face winding order is counter clockwise (CCW).</p>
+
+<p><em>Output face order:</em></p>
+
+<pre><code class="language-text">      x2
+
+                        x0
+ x1
+</code></pre>
+</div><h4 id='method.split_by_bone_count' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.split_by_bone_count' class='fnname'>split_by_bone_count</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.SplitByBoneCount.html' title='assimp::import::structs::SplitByBoneCount'>SplitByBoneCount</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>This step splits meshes with many bones into sub-meshes so that each submesh has fewer or
+as many bones as a given limit.</p>
+</div><h4 id='method.debone' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.debone' class='fnname'>debone</a>&lt;F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;mut <a class='struct' href='../../assimp/import/structs/struct.Debone.html' title='assimp::import::structs::Debone'>Debone</a>)&gt;(&amp;mut self, closure: F)</code></h4>
+<div class='docblock'><p>This step removes bones losslessly or according to some threshold.</p>
+
+<p>In some cases (i.e. formats that require it) exporters are forced to assign dummy bone
+weights to otherwise static meshes assigned to animated meshes. Full, weight-based skinning
+is expensive while animating nodes is extremely cheap, so this step is offered to clean up
+the data in that regard.</p>
+
+<p>Use the <code>threshold</code> property to control this.
+Use the <code>all_or_none</code> property if you want bones removed if and only if all bones within the
+scene qualify for removal.</p>
+</div><h4 id='method.import_no_skeleton_meshes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.import_no_skeleton_meshes' class='fnname'>import_no_skeleton_meshes</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Global setting to disable generation of skeleton dummy meshes</p>
+
+<p>Skeleton dummy meshes are generated as a visualization aid in cases which the input data
+contains no geometry, but only animation data.</p>
+</div><h4 id='method.import_mdl_colormap' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.import_mdl_colormap' class='fnname'>import_mdl_colormap</a>(&amp;mut self, path: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>)</code></h4>
+<div class='docblock'><p>Sets the colormap to be used to decode embedded textures in MDL (Quake or 3DGS) files.</p>
+
+<p>This must be a valid path to a file. The file is 768 (256*3) bytes large and contains RGB
+triplets for each of the 256 palette entries. If the file is not found, a default palette
+(from Quake 1) is used.</p>
+
+<p>Default: colormap.lmp</p>
+</div><h4 id='method.fbx_read_all_geometry_layers' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fbx_read_all_geometry_layers' class='fnname'>fbx_read_all_geometry_layers</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Set whether the FBX importer will merge all geometry layers present in the source file or
+take only the first.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.fbx_read_all_materials' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fbx_read_all_materials' class='fnname'>fbx_read_all_materials</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Set whether the FBX importer will read all materials present in the source file or take only
+the referenced materials. This has no effect if <code>fbx_read_materials</code> is false.</p>
+
+<p>Default: false.</p>
+</div><h4 id='method.fbx_read_materials' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fbx_read_materials' class='fnname'>fbx_read_materials</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Set whether the FBX importer will read materials.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.fbx_read_cameras' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fbx_read_cameras' class='fnname'>fbx_read_cameras</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Set whether the FBX importer will read cameras.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.fbx_read_lights' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fbx_read_lights' class='fnname'>fbx_read_lights</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Set whether the FBX importer will read light sources.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.fbx_read_animations' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fbx_read_animations' class='fnname'>fbx_read_animations</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Set whether the FBX importer will read animations.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.fbx_strict_mode' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fbx_strict_mode' class='fnname'>fbx_strict_mode</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Set whether the FBX importer will act in strict mode in which only FBX 2013 is supported and
+any other sub formats are rejected. FBX 2013 is the primary target for the importer, so this
+format is best supported and well-tested.</p>
+
+<p>Default: false.</p>
+</div><h4 id='method.fbx_preserve_pivots' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fbx_preserve_pivots' class='fnname'>fbx_preserve_pivots</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Set whether the FBX importer will preserve pivot points for transformations (as extra
+nodes). If set to false, pivots and offsets will be evaluated whenever possible.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.fbx_optimize_empty_animation_curves' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fbx_optimize_empty_animation_curves' class='fnname'>fbx_optimize_empty_animation_curves</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Specifies whether the FBX importer will drop empty animation curves or animation curves
+which match the bind pose transformation over their entire defined range.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.global_keyframe' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.global_keyframe' class='fnname'>global_keyframe</a>(&amp;mut self, value: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Set the vertex animation keyframe to be imported</p>
+
+<p>Assimp does not support vertex keyframes (only bone animation is supported). The library
+reads only one frame of models with vertex animations. This option applies to all importers,
+unless overridden for a specific loader.</p>
+
+<p>Default: first frame.</p>
+</div><h4 id='method.md3_keyframe' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.md3_keyframe' class='fnname'>md3_keyframe</a>(&amp;mut self, value: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Override <a href="#method.global_keyframe"><code>global_keyframe</code></a> property for the MD3 importer.</p>
+</div><h4 id='method.md2_keyframe' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.md2_keyframe' class='fnname'>md2_keyframe</a>(&amp;mut self, value: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Override <a href="#method.global_keyframe"><code>global_keyframe</code></a> property for the MD2 importer.</p>
+</div><h4 id='method.mdl_keyframe' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.mdl_keyframe' class='fnname'>mdl_keyframe</a>(&amp;mut self, value: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Override <a href="#method.global_keyframe"><code>global_keyframe</code></a> property for the MDL importer.</p>
+</div><h4 id='method.mdc_keyframe' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.mdc_keyframe' class='fnname'>mdc_keyframe</a>(&amp;mut self, value: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Override <a href="#method.global_keyframe"><code>global_keyframe</code></a> property for the MDC importer.</p>
+</div><h4 id='method.smd_keyframe' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.smd_keyframe' class='fnname'>smd_keyframe</a>(&amp;mut self, value: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Override <a href="#method.global_keyframe"><code>global_keyframe</code></a> property for the SMD importer.</p>
+</div><h4 id='method.unreal_keyframe' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.unreal_keyframe' class='fnname'>unreal_keyframe</a>(&amp;mut self, value: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Override <a href="#method.global_keyframe"><code>global_keyframe</code></a> property for the Unreal importer.</p>
+</div><h4 id='method.ac_separate_bf_cull' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ac_separate_bf_cull' class='fnname'>ac_separate_bf_cull</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Configures the AC importer to collect all surfaces which have the &quot;Backface cull&quot; flag set
+in separate meshes.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.ac_eval_subdivision' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ac_eval_subdivision' class='fnname'>ac_eval_subdivision</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Configures whether the AC importer evaluates subdivision surfaces (indicated by the presence
+of the &#39;subdiv&#39; attribute in the file). By default, Assimp performs the subdivision using
+the standard Catmull-Clark algorithm.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.unreal_handle_flags' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.unreal_handle_flags' class='fnname'>unreal_handle_flags</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Configures the Unreal importer to separate faces with different surface flags (e.g.
+two-sided vs. single-sided).</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.ter_make_uvs' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ter_make_uvs' class='fnname'>ter_make_uvs</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Configures the terragen importer to compute UVs for terrains, if not given.
+Furthermore a default texture is assigned.</p>
+
+<p>Default: false.</p>
+</div><h4 id='method.ase_reconstruct_normals' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ase_reconstruct_normals' class='fnname'>ase_reconstruct_normals</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Configures the ASE importer to always reconstruct normal vectors based on the smoothing
+groups loaded from the file.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.md3_handle_multipart' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.md3_handle_multipart' class='fnname'>md3_handle_multipart</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Configures the MD3 importer to detect and process multi-part Quake player models.</p>
+
+<p>These models usually consist of 3 files, lower.md3, upper.md3 and head.md3. If this property
+is set to true, Assimp will try to load and combine all three files if one of them is
+loaded.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.md3_skin_name' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.md3_skin_name' class='fnname'>md3_skin_name</a>(&amp;mut self, name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>)</code></h4>
+<div class='docblock'><p>Tells the MD3 importer which skin files to load.</p>
+
+<p>When loading MD3 files, Assimp checks whether a file <code>&lt;md3_file_name&gt;_&lt;skin_name&gt;.skin</code> is
+existing. These files are used by Quake III to be able to assign different skins (e.g. red
+and blue team) to models. &#39;default&#39;, &#39;red&#39;, &#39;blue&#39; are typical skin names.</p>
+
+<p>Default: &quot;default&quot;.</p>
+</div><h4 id='method.md3_shader_src' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.md3_shader_src' class='fnname'>md3_shader_src</a>(&amp;mut self, path: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>)</code></h4>
+<div class='docblock'><p>Specify the Quake 3 shader file to be used for a particular MD3 file. This can also be a
+search path.</p>
+
+<p>By default Assimp&#39;s behaviour is as follows: If a MD3 file
+<code>&lt;any_path&gt;/models/&lt;any_q3_subdir&gt;/&lt;model_name&gt;/&lt;file_name&gt;.md3</code> is loaded, the library
+tries to locate the corresponding shader file in <code>&lt;any_path&gt;/scripts/&lt;model_name&gt;.shader</code>.
+This property overrides this behaviour. It can either specify a full path to the shader to
+be loaded or alternatively the path (relative or absolute) to the directory where the
+shaders for all MD3s to be loaded reside. Assimp attempts to open
+<code>&lt;dir&gt;/&lt;model_name&gt;.shader</code> first, <code>&lt;dir&gt;/&lt;file_name&gt;.shader</code> is the fallback file.
+Note that <code>&lt;dir&gt;</code> should have a terminal (back)slash.</p>
+</div><h4 id='method.lwo_one_layer_only_str' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.lwo_one_layer_only_str' class='fnname'>lwo_one_layer_only_str</a>(&amp;mut self, name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>)</code></h4>
+<div class='docblock'><p>Configures the LWO importer to load just one layer from the model.</p>
+
+<p>LWO files consist of layers and in some cases it could be useful to load only one of them.
+This property is a string which specifies the name of the layer. If the property is not set
+the whole LWO model is loaded. Loading fails if the requested layer is not available.
+The layer name may not be empty.</p>
+
+<p>Default: all layers are loaded.</p>
+</div><h4 id='method.lwo_one_layer_only_int' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.lwo_one_layer_only_int' class='fnname'>lwo_one_layer_only_int</a>(&amp;mut self, index: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Configures the LWO importer to load just one layer from the model.</p>
+
+<p>LWO files consist of layers and in some cases it could be useful to load only one of them.
+This property is an integer which specifies the index of the layer. If the property is not
+set the whole LWO model is loaded. Loading fails if the requested layer is not available.
+The layer index is zero-based.</p>
+
+<p>Default: all layers are loaded.</p>
+</div><h4 id='method.md5_no_anim_autoload' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.md5_no_anim_autoload' class='fnname'>md5_no_anim_autoload</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Configures the MD5 loader to not load the MD5ANIM file for a MD5MESH file automatically.</p>
+
+<p>The default strategy is to look for a file with the same name but the MD5ANIM extension in
+the same directory. If it is found, it is loaded and combined with the MD5MESH file. This
+configuration option can be used to disable this behaviour.</p>
+
+<p>Default: false.</p>
+</div><h4 id='method.lws_anim_start' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.lws_anim_start' class='fnname'>lws_anim_start</a>(&amp;mut self, frame: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Defines the begin of the time range for which the LWS loader evaluates animations and
+computes aiNodeAnims.</p>
+
+<p>Assimp provides full conversion of LightWave&#39;s envelope system, including pre and post
+conditions. The loader computes linearly subsampled animation channels with the frame rate
+given in the LWS file. This property defines the start time. Note: animation channels are
+only generated if a node has at least one envelope with more than one key assigned. This
+property is given in frames, &#39;0&#39; is the first frame. By default, if this property is not
+set, the importer takes the animation start from the input LWS file (&#39;FirstFrame&#39; line)</p>
+
+<p>Default: taken from file.</p>
+</div><h4 id='method.lws_anim_end' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.lws_anim_end' class='fnname'>lws_anim_end</a>(&amp;mut self, frame: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Defines the end of the time range for which the LWS loader evaluates animations and
+computs aiNodeAnims. See <a href="#method.lws_anim_start"><code>lws_anim_start</code></a> for more info.</p>
+
+<p>Default: taken from file.</p>
+</div><h4 id='method.irr_anim_fps' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.irr_anim_fps' class='fnname'>irr_anim_fps</a>(&amp;mut self, fps: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Defines the output frame rate of the IRR loader.</p>
+
+<p>IRR animations are difficult to convert for Assimp and there will always be a loss of
+quality. This setting defines how many keys per second are returned by the converter.</p>
+
+<p>Default: 100.</p>
+</div><h4 id='method.ogre_material_file' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ogre_material_file' class='fnname'>ogre_material_file</a>(&amp;mut self, file: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>)</code></h4>
+<div class='docblock'><p>Ogre Importer will try to find referenced materials from this file.</p>
+
+<p>Ogre meshes reference with material names, this does not tell Assimp the file where it is
+located in. Assimp will try to find the source file in the following order:</p>
+
+<ol>
+<li><code>&lt;material-name&gt;.material</code></li>
+<li><code>&lt;mesh-filename-base&gt;.material</code></li>
+<li>The material name defined by this config property.</li>
+</ol>
+
+<p>Default value: Scene.material.</p>
+</div><h4 id='method.ogre_texture_type_from_filename' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ogre_texture_type_from_filename' class='fnname'>ogre_texture_type_from_filename</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Ogre Importer detect the texture usage from its filename.</p>
+
+<p>Ogre material texture units do not define texture type, the textures usage depends on the
+used shader or Ogres fixed pipeline. If this config property is true Assimp will try to
+detect the type from the textures filename postfix:</p>
+
+<ul>
+<li>_n, _nrm, _nrml, _normal, _normals and _normalmap for normal map</li>
+<li>_s, _spec, _specular and _specularmap for specular map</li>
+<li>_l, _light, _lightmap, _occ and _occlusion for light map</li>
+<li>_disp and _displacement for displacement map</li>
+</ul>
+
+<p>The matching is case insensitive. Post fix is taken between last &quot;_&quot; and last &quot;.&quot;. Default
+behavior is to detect type from lower cased texture unit name by matching against:
+normalmap, specularmap, lightmap and displacementmap. For both cases if no match is found
+aiTextureType_DIFFUSE is used.</p>
+
+<p>Default: false.</p>
+</div><h4 id='method.ifc_skip_space_representations' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ifc_skip_space_representations' class='fnname'>ifc_skip_space_representations</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Specifies whether the IFC loader skips over IfcSpace elements.</p>
+
+<p>IfcSpace elements (and their geometric representations) are used to represent, well, free
+space in a building storey.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.ifc_skip_curve_representations' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ifc_skip_curve_representations' class='fnname'>ifc_skip_curve_representations</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Specifies whether the IFC loader skips over shape representations of type &#39;Curve2D&#39;.</p>
+
+<p>A lot of files contain both a faceted mesh representation and a outline with a presentation
+type of &#39;Curve2D&#39;. Currently Assimp doesn&#39;t convert those, so turning this option off just</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.ifc_custom_triangulation' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ifc_custom_triangulation' class='fnname'>ifc_custom_triangulation</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Specifies whether the IFC loader will use its own, custom triangulation algorithm to
+triangulate wall and floor meshes.</p>
+
+<p>If this property is set to false, walls will be either triangulated by <code>triangulate</code>
+<a href="#method.triangulate"><code>triangulate</code></a> or will be passed through as huge polygons with
+faked holes (i.e. holes that are connected with the outer boundary using a dummy edge).
+It is highly recommended to set this property to true if you want triangulated data because
+<code>triangulate</code> is known to have problems with the kind of polygons that the IFC loader spits
+out for complicated meshes.</p>
+
+<p>Default: true.</p>
+</div><h4 id='method.collada_ignore_up_direction' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.collada_ignore_up_direction' class='fnname'>collada_ignore_up_direction</a>(&amp;mut self, enable: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Tells the Collada importer to ignore the up direction specified in the file.</p>
+
+<p>Default: false.</p>
+</div><h4 id='method.get_extension_list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get_extension_list' class='fnname'>get_extension_list</a>() -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
+<div class='docblock'><p>Get a list of all file extensions supported by Assimp.</p>
+
+<p>If a file extension is contained in the list this does, of course, not mean that Assimp is
+able to load all files with this extension.</p>
+
+<h1 id="return-value" class='section-header'><a
+                           href="#return-value">Return value</a></h1>
+<p><code>Vec&lt;String&gt;</code> containing the supported file extensions in lower-case with no leading
+wildcard or period characters, e.g. &quot;3ds&quot;, &quot;obj&quot;, &quot;fbx&quot;.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../../assimp/import/struct.Importer.html' title='assimp::import::Importer'>Importer</a></code></h3><div class='impl-items'><h4 id='method.drop' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "assimp";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

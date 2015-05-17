@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Quaternion` struct in crate `cgmath`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Quaternion">
+
+    <title>cgmath::Quaternion - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>cgmath</a></p><script>window.sidebarCurrent = {name: 'Quaternion', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>cgmath</a>::<wbr><a class='struct' href=''>Quaternion</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-9681' href='../src/cgmath/quaternion.rs.html#38'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Quaternion&lt;S&gt; {
+    pub s: S,
+    pub v: <a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;,
+}</pre><div class='docblock'><p>A <a href="https://en.wikipedia.org/wiki/Quaternion">quaternion</a> in scalar/vector
+form.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.s'><a class='stability Unmarked' title='No stability level'></a><code>s</code></td><td></td></tr><tr><td id='structfield.v'><a class='stability Unmarked' title='No stability level'></a><code>v</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(w: S, xi: S, yj: S, zk: S) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>Construct a new quaternion from one scalar component and three
+imaginary components</p>
+</div><h4 id='method.from_sv' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.from_sv' class='fnname'>from_sv</a>(s: S, v: <a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>Construct a new quaternion from a scalar and a vector</p>
+</div><h4 id='method.zero' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.zero' class='fnname'>zero</a>() -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>The additive identity, ie: <code>q = 0 + 0i + 0j + 0i</code></p>
+</div><h4 id='method.identity' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.identity' class='fnname'>identity</a>() -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>The multiplicative identity, ie: <code>q = 1 + 0i + 0j + 0i</code></p>
+</div><h4 id='method.mul_s' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.mul_s' class='fnname'>mul_s</a>(&amp;self, value: S) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>The result of multiplying the quaternion a scalar</p>
+</div><h4 id='method.div_s' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.div_s' class='fnname'>div_s</a>(&amp;self, value: S) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>The result of dividing the quaternion a scalar</p>
+</div><h4 id='method.mul_v' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.mul_v' class='fnname'>mul_v</a>(&amp;self, vec: &amp;<a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>The result of multiplying the quaternion by a vector</p>
+</div><h4 id='method.add_q' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_q' class='fnname'>add_q</a>(&amp;self, other: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>The sum of this quaternion and <code>other</code></p>
+</div><h4 id='method.sub_q' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.sub_q' class='fnname'>sub_q</a>(&amp;self, other: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>The difference between this quaternion and <code>other</code></p>
+</div><h4 id='method.mul_q' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.mul_q' class='fnname'>mul_q</a>(&amp;self, other: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>The result of multipliplying the quaternion by <code>other</code></p>
+</div><h4 id='method.mul_self_s' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.mul_self_s' class='fnname'>mul_self_s</a>(&amp;mut self, s: S)</code></h4>
+<div class='docblock'><p>Multiply this quaternion by a scalar, in-place.</p>
+</div><h4 id='method.div_self_s' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.div_self_s' class='fnname'>div_self_s</a>(&amp;mut self, s: S)</code></h4>
+<div class='docblock'><p>Divide this quaternion by a scalar, in-place.</p>
+</div><h4 id='method.add_self_q' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_self_q' class='fnname'>add_self_q</a>(&amp;mut self, q: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;)</code></h4>
+<div class='docblock'><p>Add this quaternion by another, in-place.</p>
+</div><h4 id='method.sub_self_q' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.sub_self_q' class='fnname'>sub_self_q</a>(&amp;mut self, q: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;)</code></h4>
+<div class='docblock'><p>Subtract another quaternion from this one, in-place.</p>
+</div><h4 id='method.mul_self_q' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.mul_self_q' class='fnname'>mul_self_q</a>(&amp;mut self, q: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;)</code></h4>
+<div class='docblock'><p>Multiply this quaternion by another, in-place.</p>
+</div><h4 id='method.dot' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.dot' class='fnname'>dot</a>(&amp;self, q: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;) -&gt; S</code></h4>
+<div class='docblock'><p>The dot product of the quaternion and <code>q</code>.</p>
+</div><h4 id='method.conjugate' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.conjugate' class='fnname'>conjugate</a>(&amp;self) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>The conjugate of the quaternion.</p>
+</div><h4 id='method.magnitude2' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.magnitude2' class='fnname'>magnitude2</a>(&amp;self) -&gt; S</code></h4>
+<div class='docblock'><p>The squared magnitude of the quaternion. This is useful for
+magnitude comparisons where the exact magnitude does not need to be
+calculated.</p>
+</div><h4 id='method.magnitude' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.magnitude' class='fnname'>magnitude</a>(&amp;self) -&gt; S</code></h4>
+<div class='docblock'><p>The magnitude of the quaternion</p>
+
+<h1 id="performance-notes" class='section-header'><a
+                           href="#performance-notes">Performance notes</a></h1>
+<p>For instances where the exact magnitude of the quaternion does not need
+to be known, for example for quaternion-quaternion magnitude comparisons,
+it is advisable to use the <code>magnitude2</code> method instead.</p>
+</div><h4 id='method.normalize' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.normalize' class='fnname'>normalize</a>(&amp;self) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>Normalize this quaternion, returning the new quaternion.</p>
+</div><h4 id='method.nlerp' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.nlerp' class='fnname'>nlerp</a>(&amp;self, other: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;, amount: S) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>Do a normalized linear interpolation with <code>other</code>, by <code>amount</code>.</p>
+</div></div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.slerp' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.slerp' class='fnname'>slerp</a>(&amp;self, other: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;, amount: S) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>Spherical Linear Intoperlation</p>
+
+<p>Return the spherical linear interpolation between the quaternion and
+<code>other</code>. Both quaternions should be normalized first.</p>
+
+<h1 id="performance-notes" class='section-header'><a
+                           href="#performance-notes">Performance notes</a></h1>
+<p>The <code>acos</code> operation used in <code>slerp</code> is an expensive operation, so
+unless your quarternions are far away from each other it&#39;s generally
+more advisable to use <code>nlerp</code> when you know your rotations are going
+to be small.</p>
+
+<ul>
+<li><a href="http://number-none.com/product/Understanding%20Slerp,%20Then%20Not%20Using%20It/">Understanding Slerp, Then Not Using It</a></li>
+<li><a href="http://www.arcsynthesis.org/gltut/Positioning/Tut08%20Interpolation.html">Arcsynthesis OpenGL tutorial</a></li>
+</ul>
+</div><h4 id='method.to_euler' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.to_euler' class='fnname'>to_euler</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../cgmath/struct.Rad.html' title='cgmath::Rad'>Rad</a>&lt;S&gt;, <a class='struct' href='../cgmath/struct.Rad.html' title='cgmath::Rad'>Rad</a>&lt;S&gt;, <a class='struct' href='../cgmath/struct.Rad.html' title='cgmath::Rad'>Rad</a>&lt;S&gt;)</a></code></h4>
+<div class='docblock'><p>Convert a Quaternion to Eular angles
+    This is a polar singularity aware conversion</p>
+
+<p>Based on:
+- <a href="http://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToEuler/">Maths - Conversion Quaternion to Euler</a></p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> + <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='../cgmath/trait.Array1.html' title='cgmath::Array1'>Array1</a>&lt;S&gt; for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.map' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Array1.html#method.map' class='fnname'>map</a>&lt;F&gt;(&amp;mut self, op: F) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt; <span class='where'>where F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html' title='core::ops::FnMut'>FnMut</a>(S) -&gt; S</span></code></h4>
+<h4 id='method.ptr' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Array1.html#method.ptr' class='fnname'>ptr</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a Element</code></h4>
+<h4 id='method.mut_ptr' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Array1.html#method.mut_ptr' class='fnname'>mut_ptr</a>&lt;'a&gt;(&amp;'a mut self) -&gt; &amp;'a mut Element</code></h4>
+<h4 id='method.swap_elems' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Array1.html#method.swap_elems' class='fnname'>swap_elems</a>(&amp;mut self, i: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, j: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>)</code></h4>
+<h4 id='method.replace_elem' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Array1.html#method.replace_elem' class='fnname'>replace_elem</a>(&amp;mut self, i: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, src: Element) -&gt; Element</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Index.html' title='core::ops::Index'>Index</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt; for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='assoc_type.Output' class='type'><a class='stability Unmarked' title='No stability level'></a><code>type Output = S</code></h4>
+<h4 id='method.index' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Index.html#method.index' class='fnname'>index</a>&lt;'a&gt;(&amp;'a self, i: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; &amp;'a S</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html' title='core::ops::IndexMut'>IndexMut</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt; for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.index_mut' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html#method.index_mut' class='fnname'>index_mut</a>&lt;'a&gt;(&amp;'a mut self, i: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; &amp;'a mut S</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='../cgmath/trait.ApproxEq.html' title='cgmath::ApproxEq'>ApproxEq</a>&lt;S&gt; for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.approx_eq_eps' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.ApproxEq.html#method.approx_eq_eps' class='fnname'>approx_eq_eps</a>(&amp;self, other: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;, epsilon: &amp;S) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.approx_epsilon' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.ApproxEq.html#method.approx_epsilon' class='fnname'>approx_epsilon</a>(_hack: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;Self&gt;) -&gt; T</code></h4>
+<h4 id='method.approx_eq' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.ApproxEq.html#method.approx_eq' class='fnname'>approx_eq</a>(&amp;self, other: &amp;Self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='../cgmath/trait.ToMatrix3.html' title='cgmath::ToMatrix3'>ToMatrix3</a>&lt;S&gt; for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.to_matrix3' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.ToMatrix3.html#method.to_matrix3' class='fnname'>to_matrix3</a>(&amp;self) -&gt; <a class='struct' href='../cgmath/struct.Matrix3.html' title='cgmath::Matrix3'>Matrix3</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>Convert the quaternion to a 3 x 3 rotation matrix</p>
+</div></div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='../cgmath/trait.ToMatrix4.html' title='cgmath::ToMatrix4'>ToMatrix4</a>&lt;S&gt; for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.to_matrix4' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.ToMatrix4.html#method.to_matrix4' class='fnname'>to_matrix4</a>(&amp;self) -&gt; <a class='struct' href='../cgmath/struct.Matrix4.html' title='cgmath::Matrix4'>Matrix4</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>Convert the quaternion to a 4 x 4 rotation matrix</p>
+</div></div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Neg.html' title='core::ops::Neg'>Neg</a> for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='assoc_type.Output' class='type'><a class='stability Unmarked' title='No stability level'></a><code>type Output = <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<h4 id='method.neg' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Neg.html#method.neg' class='fnname'>neg</a>(self) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='../cgmath/trait.ToBasis3.html' title='cgmath::ToBasis3'>ToBasis3</a>&lt;S&gt; for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.to_rot3' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.ToBasis3.html#method.to_rot3' class='fnname'>to_rot3</a>(&amp;self) -&gt; <a class='struct' href='../cgmath/struct.Basis3.html' title='cgmath::Basis3'>Basis3</a>&lt;S&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='../cgmath/trait.ToQuaternion.html' title='cgmath::ToQuaternion'>ToQuaternion</a>&lt;S&gt; for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.to_quaternion' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.ToQuaternion.html#method.to_quaternion' class='fnname'>to_quaternion</a>(&amp;self) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a> + 'static&gt; <a class='trait' href='../cgmath/trait.Rotation.html' title='cgmath::Rotation'>Rotation</a>&lt;S, <a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;, <a class='struct' href='../cgmath/struct.Point3.html' title='cgmath::Point3'>Point3</a>&lt;S&gt;&gt; for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.identity' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation.html#method.identity' class='fnname'>identity</a>() -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<h4 id='method.look_at' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation.html#method.look_at' class='fnname'>look_at</a>(dir: &amp;<a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;, up: &amp;<a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<h4 id='method.between_vectors' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation.html#method.between_vectors' class='fnname'>between_vectors</a>(a: &amp;<a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;, b: &amp;<a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<h4 id='method.rotate_vector' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation.html#method.rotate_vector' class='fnname'>rotate_vector</a>(&amp;self, vec: &amp;<a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;</code></h4>
+<h4 id='method.concat' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation.html#method.concat' class='fnname'>concat</a>(&amp;self, other: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<h4 id='method.concat_self' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation.html#method.concat_self' class='fnname'>concat_self</a>(&amp;mut self, other: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;)</code></h4>
+<h4 id='method.invert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation.html#method.invert' class='fnname'>invert</a>(&amp;self) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<h4 id='method.invert_self' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation.html#method.invert_self' class='fnname'>invert_self</a>(&amp;mut self)</code></h4>
+<h4 id='method.rotate_point' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation.html#method.rotate_point' class='fnname'>rotate_point</a>(&amp;self, point: &amp;P) -&gt; P</code></h4>
+<h4 id='method.rotate_ray' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation.html#method.rotate_ray' class='fnname'>rotate_ray</a>(&amp;self, ray: &amp;<a class='struct' href='../cgmath/struct.Ray.html' title='cgmath::Ray'>Ray</a>&lt;S, P, V&gt;) -&gt; <a class='struct' href='../cgmath/struct.Ray.html' title='cgmath::Ray'>Ray</a>&lt;S, P, V&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a>&gt; <a class='trait' href='../cgmath/trait.Rotation3.html' title='cgmath::Rotation3'>Rotation3</a>&lt;S&gt; for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt; <span class='where'>where S: 'static</span></code></h3><div class='impl-items'><h4 id='method.from_axis_angle' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation3.html#method.from_axis_angle' class='fnname'>from_axis_angle</a>(axis: &amp;<a class='struct' href='../cgmath/struct.Vector3.html' title='cgmath::Vector3'>Vector3</a>&lt;S&gt;, angle: <a class='struct' href='../cgmath/struct.Rad.html' title='cgmath::Rad'>Rad</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<h4 id='method.from_euler' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation3.html#method.from_euler' class='fnname'>from_euler</a>(x: <a class='struct' href='../cgmath/struct.Rad.html' title='cgmath::Rad'>Rad</a>&lt;S&gt;, y: <a class='struct' href='../cgmath/struct.Rad.html' title='cgmath::Rad'>Rad</a>&lt;S&gt;, z: <a class='struct' href='../cgmath/struct.Rad.html' title='cgmath::Rad'>Rad</a>&lt;S&gt;) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<div class='docblock'><ul>
+<li><a href="http://www.euclideanspace.com/maths/geometry/rotations/conversions/eulerToQuaternion/index.htm">Maths - Conversion Euler to Quaternion</a></li>
+</ul>
+</div><h4 id='method.from_angle_x' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation3.html#method.from_angle_x' class='fnname'>from_angle_x</a>(theta: <a class='struct' href='../cgmath/struct.Rad.html' title='cgmath::Rad'>Rad</a>&lt;S&gt;) -&gt; Self</code></h4>
+<h4 id='method.from_angle_y' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation3.html#method.from_angle_y' class='fnname'>from_angle_y</a>(theta: <a class='struct' href='../cgmath/struct.Rad.html' title='cgmath::Rad'>Rad</a>&lt;S&gt;) -&gt; Self</code></h4>
+<h4 id='method.from_angle_z' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../cgmath/trait.Rotation3.html#method.from_angle_z' class='fnname'>from_angle_z</a>(theta: <a class='struct' href='../cgmath/struct.Rad.html' title='cgmath::Rad'>Rad</a>&lt;S&gt;) -&gt; Self</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../cgmath/trait.BaseFloat.html' title='cgmath::BaseFloat'>BaseFloat</a> + <a class='trait' href='../rand/trait.Rand.html' title='rand::Rand'>Rand</a>&gt; <a class='trait' href='../rand/trait.Rand.html' title='rand::Rand'>Rand</a> for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h3><div class='impl-items'><h4 id='method.rand' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../rand/trait.Rand.html#method.rand' class='fnname'>rand</a>&lt;R: <a class='trait' href='../rand/trait.Rng.html' title='rand::Rng'>Rng</a>&gt;(rng: &amp;mut R) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../rustc_serialize/serialize/trait.Decodable.html' title='rustc_serialize::serialize::Decodable'>Decodable</a>&gt; <a class='trait' href='../rustc_serialize/serialize/trait.Decodable.html' title='rustc_serialize::serialize::Decodable'>Decodable</a> for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='../rustc_serialize/serialize/trait.Decodable.html' title='rustc_serialize::serialize::Decodable'>Decodable</a>, S: <a class='trait' href='../rustc_serialize/serialize/trait.Decodable.html' title='rustc_serialize::serialize::Decodable'>Decodable</a></span></code></h3><div class='impl-items'><h4 id='method.decode' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../rustc_serialize/serialize/trait.Decodable.html#method.decode' class='fnname'>decode</a>&lt;__D: <a class='trait' href='../rustc_serialize/serialize/trait.Decoder.html' title='rustc_serialize::serialize::Decoder'>Decoder</a>&gt;(__arg_0: &amp;mut __D) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;, __D&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;S: <a class='trait' href='../rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a>&gt; <a class='trait' href='../rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a> for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='../rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a>, S: <a class='trait' href='../rustc_serialize/serialize/trait.Encodable.html' title='rustc_serialize::serialize::Encodable'>Encodable</a></span></code></h3><div class='impl-items'><h4 id='method.encode' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='../rustc_serialize/serialize/trait.Encodable.html#method.encode' class='fnname'>encode</a>&lt;__S: <a class='trait' href='../rustc_serialize/serialize/trait.Encoder.html' title='rustc_serialize::serialize::Encoder'>Encoder</a>&gt;(&amp;self, __arg_0: &amp;mut __S) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, __S&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a>, S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a></span></code></h3><div class='impl-items'><h4 id='method.eq' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ne' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>, S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a></span></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt;</code></h4>
+<h4 id='method.clone_from' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../cgmath/struct.Quaternion.html' title='cgmath::Quaternion'>Quaternion</a>&lt;S&gt; <span class='where'>where S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a>, S: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a></span></code></h3><div class='impl-items'></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "cgmath";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

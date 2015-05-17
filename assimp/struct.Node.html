@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Node` struct in crate `assimp`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Node">
+
+    <title>assimp::Node - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>assimp</a></p><script>window.sidebarCurrent = {name: 'Node', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>assimp</a>::<wbr><a class='struct' href=''>Node</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-7004' href='../src/assimp/internal_macros.rs.html#87'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Node&lt;'a&gt;(_);</pre><div class='docblock'><p>/// The <code>Node</code> type represents a node in the imported scene hierarchy.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a&gt; <a class='struct' href='../assimp/struct.Node.html' title='assimp::Node'>Node</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.name' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.name' class='fnname'>name</a>(&amp;self) -&gt; &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></h4>
+<div class='docblock'><p>Returns the name of the node.</p>
+</div><h4 id='method.transformation' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.transformation' class='fnname'>transformation</a>(&amp;self) -&gt; <a class='struct' href='../assimp/math/matrix4/struct.Matrix4x4.html' title='assimp::math::matrix4::Matrix4x4'>Matrix4x4</a></code></h4>
+<div class='docblock'><p>Returns the node&#39;s transformation matrix.</p>
+</div><h4 id='method.parent' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.parent' class='fnname'>parent</a>(&amp;self) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../assimp/struct.Node.html' title='assimp::Node'>Node</a>&gt;</code></h4>
+<div class='docblock'><p>Return the parent of this node. Returns <code>None</code> if this node is the root node.</p>
+</div><h4 id='method.num_children' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.num_children' class='fnname'>num_children</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
+<div class='docblock'><p>Returns the number of child nodes.</p>
+</div><h4 id='method.child_iter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.child_iter' class='fnname'>child_iter</a>(&amp;self) -&gt; <a class='struct' href='../assimp/scene/struct.NodeIter.html' title='assimp::scene::NodeIter'>NodeIter</a></code></h4>
+<div class='docblock'><p>Returns a vector containing all of the child nodes under this node.</p>
+</div><h4 id='method.num_meshes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.num_meshes' class='fnname'>num_meshes</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
+<div class='docblock'><p>Returns the number of meshes under this node.</p>
+</div><h4 id='method.meshes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.meshes' class='fnname'>meshes</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
+<div class='docblock'><p>Returns a vector containing all of the meshes under this node. These are indices into
+the meshes contained in the <code>Scene</code> struct.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;'a&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a> for <a class='struct' href='../assimp/struct.Node.html' title='assimp::Node'>Node</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='assoc_type.Target' class='type'><a class='stability Unmarked' title='No stability level'></a><code>type Target = <a class='struct' href='../assimp_sys/scene/struct.AiNode.html' title='assimp_sys::scene::AiNode'>AiNode</a></code></h4>
+<h4 id='method.deref' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#method.deref' class='fnname'>deref</a>&lt;'b&gt;(&amp;'b self) -&gt; &amp;'b <a class='struct' href='../assimp_sys/scene/struct.AiNode.html' title='assimp_sys::scene::AiNode'>AiNode</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "assimp";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

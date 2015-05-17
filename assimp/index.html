@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `assimp` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, assimp">
+
+    <title>assimp - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'assimp', ty: 'mod', relpath: '../'};</script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>assimp</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/assimp/lib.rs.html#1-21'>[src]</a></span></h1>
+<div class='docblock'>
+<h1 id="assimp---open-asset-import-library" class='section-header'><a
+                           href="#assimp---open-asset-import-library">assimp - Open Asset Import Library</a></h1>
+<p>Bindings for the <a href="http://assimp.sourceforge.net">Assimp</a> library.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use import::<a class='struct' href='../assimp/import/struct.Importer.html' title='assimp::import::Importer'>Importer</a>;</code></td></tr><tr><td><code>pub use log::<a class='struct' href='../assimp/log/struct.LogStream.html' title='assimp::log::LogStream'>LogStream</a>;</code></td></tr><tr><td><code>pub use math::{<a class='struct' href='../assimp/math/color3/struct.Color3D.html' title='assimp::math::color3::Color3D'>Color3D</a>, <a class='struct' href='../assimp/math/color4/struct.Color4D.html' title='assimp::math::color4::Color4D'>Color4D</a>, <a class='struct' href='../assimp/math/matrix3/struct.Matrix3x3.html' title='assimp::math::matrix3::Matrix3x3'>Matrix3x3</a>, <a class='struct' href='../assimp/math/matrix4/struct.Matrix4x4.html' title='assimp::math::matrix4::Matrix4x4'>Matrix4x4</a>, <a class='struct' href='../assimp/math/quaternion/struct.Quaternion.html' title='assimp::math::quaternion::Quaternion'>Quaternion</a>, <a class='struct' href='../assimp/math/vector2/struct.Vector2D.html' title='assimp::math::vector2::Vector2D'>Vector2D</a>, <a class='struct' href='../assimp/math/vector3/struct.Vector3D.html' title='assimp::math::vector3::Vector3D'>Vector3D</a>};</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='export/index.html'
+                               title='assimp::export'>export</a></td>
+                        <td class='docblock short'><p>The <code>export</code> module implements functionality for exporting scenes (not yet implemented).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='import/index.html'
+                               title='assimp::import'>import</a></td>
+                        <td class='docblock short'><p>The <code>import</code> module contains functionality for importing scenes.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='log/index.html'
+                               title='assimp::log'>log</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='math/index.html'
+                               title='assimp::math'>math</a></td>
+                        <td class='docblock short'><p>The <code>math</code> module contains definitions of primitive math types.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='scene/index.html'
+                               title='assimp::scene'>scene</a></td>
+                        <td class='docblock short'><p>The <code>scene</code> module contains definitions of imported scene data.</p>
+</td>
+                    </tr>
+                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Animation.html'
+                               title='assimp::Animation'>Animation</a></td>
+                        <td class='docblock short'><p>/// Animation type (not yet implemented)</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Camera.html'
+                               title='assimp::Camera'>Camera</a></td>
+                        <td class='docblock short'><p>/// Camera type (not yet implemented)</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Face.html'
+                               title='assimp::Face'>Face</a></td>
+                        <td class='docblock short'><p>/// Face type (not yet implemented)</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Light.html'
+                               title='assimp::Light'>Light</a></td>
+                        <td class='docblock short'><p>/// Light type (not yet implemented)</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Material.html'
+                               title='assimp::Material'>Material</a></td>
+                        <td class='docblock short'><p>/// Material type (not yet implemented)</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Mesh.html'
+                               title='assimp::Mesh'>Mesh</a></td>
+                        <td class='docblock short'><p>/// Mesh type (incomplete)</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Node.html'
+                               title='assimp::Node'>Node</a></td>
+                        <td class='docblock short'><p>/// The <code>Node</code> type represents a node in the imported scene hierarchy.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Scene.html'
+                               title='assimp::Scene'>Scene</a></td>
+                        <td class='docblock short'><p>/// The <code>Scene</code> type is the root container for all imported scene data.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Texture.html'
+                               title='assimp::Texture'>Texture</a></td>
+                        <td class='docblock short'><p>/// Texture type.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "assimp";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>
