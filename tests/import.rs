@@ -1,10 +1,10 @@
 extern crate assimp;
 
-use assimp::*;
+use assimp::Importer;
 
 #[test]
 fn test_get_extension_list() {
-    let extensions = assimp::import::get_extension_list();
+    let extensions = Importer::get_extension_list();
     println!("{:?}", extensions);
     assert!(extensions.len() > 0);
 }

@@ -1033,22 +1033,22 @@ impl Importer {
     pub fn collada_ignore_up_direction(&mut self, enable: bool) {
         self.set_bool_property(IMPORT_COLLADA_IGNORE_UP_DIRECTION, enable);
     }
-}
 
-/// Get a list of all file extensions supported by Assimp.
-///
-/// If a file extension is contained in the list this does, of course, not mean that Assimp is
-/// able to load all files with this extension.
-///
-/// # Return value
-/// `Vec<String>` containing the supported file extensions in lower-case with no leading
-/// wildcard or period characters, e.g. "3ds", "obj", "fbx".
-pub fn get_extension_list() -> Vec<String> {
-    let mut ext_list = AiString::default();
-    unsafe { aiGetExtensionList(&mut ext_list) };
+    /// Get a list of all file extensions supported by Assimp.
+    ///
+    /// If a file extension is contained in the list this does, of course, not mean that Assimp is
+    /// able to load all files with this extension.
+    ///
+    /// # Return value
+    /// `Vec<String>` containing the supported file extensions in lower-case with no leading
+    /// wildcard or period characters, e.g. "3ds", "obj", "fbx".
+    pub fn get_extension_list() -> Vec<String> {
+        let mut ext_list = AiString::default();
+        unsafe { aiGetExtensionList(&mut ext_list) };
 
-    let extensions = ext_list.as_ref().split(';');
-    extensions.map(|x| x.trim_left_matches("*.").to_owned()).collect()
+        let extensions = ext_list.as_ref().split(';');
+        extensions.map(|x| x.trim_left_matches("*.").to_owned()).collect()
+    }
 }
 
 impl Drop for Importer {
