@@ -1,6 +1,7 @@
 language: rust
 
 rust:
+  - stable
   - beta
   - nightly
 
@@ -18,11 +19,10 @@ before_script:
   - pip install 'travis-cargo<0.2' --user
   - export PATH=$HOME/.local/bin:$PATH
 
-# note: nightly produces nicer docs right now...
 script: |
   travis-cargo build &&
   travis-cargo test &&
-  travis-cargo --only nightly doc
+  travis-cargo --only stable doc
 
 after_success:
-  - travis-cargo --only nightly doc-upload
+  - travis-cargo --only stable doc-upload
