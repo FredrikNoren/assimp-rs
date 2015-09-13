@@ -73,6 +73,14 @@ impl<'a> Mesh<'a> {
         FaceIter::new(self.faces,
                       self.num_faces as usize)
     }
+    
+    pub fn get_face(&self, id: u32) -> Option<Face> {
+        if id < self.num_faces {
+            unsafe { Some(Face::from_raw(self.faces.offset(id as isize))) }
+        } else {
+            None
+        }
+    }
 
     #[inline]
     fn vertex_data(&self, array: *mut AiVector3D, id: u32) -> Option<Vector3D> {
