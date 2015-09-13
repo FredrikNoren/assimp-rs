@@ -1,13 +1,13 @@
 use ffi::*;
 
 // Import all types
-use super::animation::{Animation, AnimationIter};
-use super::camera::{Camera, CameraIter};
-use super::light::{Light, LightIter};
-use super::material::{Material, MaterialIter};
-use super::mesh::{Mesh, MeshIter};
-use super::node::Node;
-use super::texture::{Texture, TextureIter};
+use super::animation::*;
+use super::camera::*;
+use super::light::*;
+use super::material::*;
+use super::mesh::*;
+use super::node::*;
+use super::texture::*;
 
 define_type! {
     /// The `Scene` type is the root container for all imported scene data.
@@ -87,6 +87,15 @@ impl<'a> Scene<'a> {
     pub fn animation_iter(&self) -> AnimationIter {
         AnimationIter::new(self.animations as *const *const AiAnimation,
                            self.num_animations as usize)
+    }
+
+    /// Return an individual animation from the scene.
+    pub fn animation(&self, id: usize) -> Option<Animation> {
+        if id < self.num_animations as usize {
+            unsafe { Some(Animation::from_raw(*(self.animations.offset(id as isize)))) }
+        } else {
+            None
+        }
     }
 
     /// Returns the number of animations in the scene.

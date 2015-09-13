@@ -1,14 +1,14 @@
 //! The `scene` module contains definitions of imported scene data.
 
-pub use self::animation::{Animation, AnimationIter};
-pub use self::camera::{Camera, CameraIter};
-pub use self::face::{Face, FaceIter};
-pub use self::light::{Light, LightIter};
-pub use self::material::{Material, MaterialIter};
-pub use self::mesh::{Mesh, MeshIter};
-pub use self::node::{Node, NodeIter};
+pub use self::animation::*;
+pub use self::camera::*;
+pub use self::face::*;
+pub use self::light::*;
+pub use self::material::*;
+pub use self::mesh::*;
+pub use self::node::*;
 pub use self::scene::Scene;
-pub use self::texture::{Texture, TextureIter};
+pub use self::texture::*;
 
 mod animation;
 mod camera;
