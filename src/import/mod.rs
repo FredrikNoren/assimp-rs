@@ -72,6 +72,34 @@ impl Importer {
         }
     }
 
+    /// Load a scene from a string.
+    ///
+    /// If the call succeeds, return value is `Ok`, containing the loaded `Scene` structure.
+    /// If the call fails, return value is `Err`, containing the error string returned from
+    /// the Assimp library.
+    pub fn read_string<'a>(&self, data: &str) -> Result<Scene<'a>, &str> {
+        let cstr = CString::new(data).unwrap().as_ptr();
+        let raw_scene = unsafe {
+            aiImportFromMemoryWithProperties(cstr, data.len() as u32, self.flags, ptr::null_mut(), self.property_store)
+        };
+        if !raw_scene.is_null() {
+            Ok(Scene::from_raw(raw_scene))
+        } else {
+            let error_str = unsafe { aiGetErrorString() };
+            if error_str.is_null() {
+                Err("Unknown error")
+            } else {
+                unsafe {
+                    let cstr = CStr::from_ptr(error_str);
+                    match str::from_utf8(cstr.to_bytes()) {
+                        Ok(s) => Err(s),
+                        Err(_) => Err("Unknown error")
+                    }
+                }
+            }
+        }
+    }
+
     /// Apply post-processing to an already-imported scene.
     ///
     /// This performs all enabled post-processing steps on an already imported scene. The main
